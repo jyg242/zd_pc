@@ -5,15 +5,24 @@
     <About class="index_about"></About>
     <Industry></Industry>
     <News></News>
+    <Partner></Partner>
+    <Footer></Footer>
+    
   </div>
 </template>
 
 <script>
-import Header from "../components/Header/Index.vue";
-import Banner from "../components/Banner/Index.vue";
-import About from "../components/About/Index.vue";
-import Industry from "../components/Industry/Index.vue";
-import News from "../components/News/Index.vue";
+import '../assets/css/style.css'
+
+import Header from "../components/Index/Header/Index.vue";
+import Banner from "../components/Index/Banner/Index.vue";
+import About from "../components/Index/About/Index.vue";
+import Industry from "../components/Index/Industry/Index.vue";
+import News from "../components/Index/News/Index.vue";
+import Partner from "../components/Index/Partner/Index.vue";
+import Footer from "../components/Index/Footer/Index.vue";
+
+
 
 export default {
   components: {
@@ -21,7 +30,9 @@ export default {
     Banner,
     About,
     Industry,
-    News
+    News,
+    Partner,
+    Footer
   }
 };
 </script>
