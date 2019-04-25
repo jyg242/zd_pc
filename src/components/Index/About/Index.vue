@@ -20,6 +20,7 @@
 
 <script>
 export default {
+  props:['about_details'],
   data() {
     return {
       img: "http://www.zhongzhiwealth.com/templets/zzcf/images/indexss_03.jpg"

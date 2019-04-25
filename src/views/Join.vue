@@ -5,7 +5,7 @@
       <img
         width="100%"
         height="308px"
-        src="http://www.zhongzhiwealth.com/uploads/170407/1-1F40G3053R94.jpg"
+        src="http://www.zhongzhiwealth.com/uploads/170407/1-1F40G04143611.jpg"
         alt
       >
     </div>
@@ -37,11 +37,11 @@ export default {
     return {
       cs: "集团简介",
       sidebar: {
-        title: "关于我们",
-        title_en: "ABOUT US",
+        title: "加入我们",
+        title_en: "JOIN US",
         sub_nav: [
-          { id: 1, nav: "集团简介", url: "/about/intro?key=1" },
-          { id: 2, nav: "发展历程", url: "/about/history?key=2" }
+          { id: 1, nav: "联系我们", url: "/join/contact?key=1" },
+          { id: 2, nav: "诚聘英才", url: "/join/recruit?key=2" }
         ]
       }
     };

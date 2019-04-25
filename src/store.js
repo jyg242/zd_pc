@@ -4,13 +4,15 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
+    state: {
+        breadeList: {}
+    },
+    mutations: {
+        setBreadList(state, item) {
+            state.breadeList = item
+        }
+    },
+    actions: {
 
-  },
-  mutations: {
-
-  },
-  actions: {
-
-  }
+    }
 })

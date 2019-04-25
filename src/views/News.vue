@@ -13,7 +13,7 @@
       <innerMenu :list="sidebar"></innerMenu>
       <div class="right">
         <breadCrumb></breadCrumb>
-        <router-view :test="cs"></router-view>
+        <router-view></router-view>
       </div>
     </div>
     <Footer></Footer>
@@ -35,13 +35,13 @@ export default {
   },
   data() {
     return {
-      cs: "集团简介",
       sidebar: {
-        title: "关于我们",
-        title_en: "ABOUT US",
+        title: "新闻中心",
+        title_en: "NEWS",
         sub_nav: [
-          { id: 1, nav: "集团简介", url: "/about/intro?key=1" },
-          { id: 2, nav: "发展历程", url: "/about/history?key=2" }
+          { id: 1, nav: "公司新闻", url: "/news/company?key=1" },
+          { id: 2, nav: "媒体关注", url: "/news/media?key=2" },
+          { id: 3, nav: "公司公告", url: "/news/notice?key=3" }
         ]
       }
     };

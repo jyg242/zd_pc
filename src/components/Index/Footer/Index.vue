@@ -49,7 +49,7 @@
           <img
             src="http://www.zhongzhiwealth.com/templets/zzcf/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png"
             alt
-          >京公网安备 11010502035585号
+          > 京公网安备 11010502035585号
         </p>
       </div>
     </div>
@@ -62,13 +62,14 @@ export default {};
 
 <style lang="scss" scoped>
 .footer {
-  height: 420px;
+  height: 380px;
   background-color: #ad8757;
-  opacity: .9;
-  color: #fff;
+  // background: #363636;
+  // opacity: .7;
+  color: #FFFFFF;
   .content {
     width: 1080px;
-    height: 400px;
+    height: 350px;
     margin: 0 auto;
     padding-top: 30px;
     display: flex;
@@ -86,7 +87,7 @@ export default {};
       p {
         position: absolute;
         // left: 5px;
-        top: 300px;
+        top: 270px;
       }
       dl {
         dt {
@@ -98,7 +99,7 @@ export default {};
         }
         dd {
           text-align: center;
-          color: #fff;
+          color: #FFFFFF;
           font-size: 13px;
           line-height: 28px;
           &:hover {
@@ -114,7 +115,7 @@ export default {};
       
       h4 {
         font-size: 24px;
-        color: #fff;
+        color: #FFFFFF;
         line-height: 52px;
         i{
             margin-right: 10px;
@@ -125,8 +126,8 @@ export default {};
       width: 1080px;
       height: 50px;
       position: absolute;
-      top: 350px;
-      border-top: 1px solid #fff;
+      top: 315px;
+      border-top: 1px solid #FFFFFF;
       padding-top: 5px;
       p {
         margin: 0;

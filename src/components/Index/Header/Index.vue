@@ -6,18 +6,18 @@
     <div class="header-nav">
       <a-menu v-model="current" mode="horizontal">
         <a-sub-menu>
-          <span slot="title" class="submenu-title-wrapper">首页</span>
+          <span slot="title" class="submenu-title-wrapper" @click="index">首页</span>
         </a-sub-menu>
         <a-sub-menu>
           <span slot="title" class="submenu-title-wrapper">关于我们</span>
-          <a-menu-item key="setting:1">集团简介</a-menu-item>
-          <a-menu-item key="setting:2">发展历程</a-menu-item>
+          <a-menu-item key="/about/intro?key=1">集团简介</a-menu-item>
+          <a-menu-item key="/about/history?key=2">发展历程</a-menu-item>
         </a-sub-menu>
         <a-sub-menu>
           <span slot="title" class="submenu-title-wrapper">新闻中心</span>
-          <a-menu-item key="setting:3">公司新闻</a-menu-item>
-          <a-menu-item key="setting:4">媒体关注</a-menu-item>
-          <a-menu-item key="setting:5">公司公告</a-menu-item>
+          <a-menu-item key="/news/company?key=1">公司新闻</a-menu-item>
+          <a-menu-item key="/news/media?key=2">媒体关注</a-menu-item>
+          <a-menu-item key="/news/notice?key=3">公司公告</a-menu-item>
         </a-sub-menu>
         <a-sub-menu>
           <span slot="title" class="submenu-title-wrapper">产业布局</span>
@@ -28,7 +28,7 @@
         </a-sub-menu>
         <a-sub-menu>
           <span slot="title" class="submenu-title-wrapper">加入我们</span>
-          <a-menu-item key="setting:7">联系我们</a-menu-item>
+          <a-menu-item key="/join/contact?key=1">联系我们</a-menu-item>
           <a-menu-item key="setting:8">诚聘英才</a-menu-item>
         </a-sub-menu>
       </a-menu>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -44,6 +45,17 @@ export default {
         "http://119.3.17.107/seeyon/fileUpload.do?method=showRTE&type=image&fileId=-7585268485041271763",
       current: []
     };
+  },
+  watch: {
+    current() {
+      this.$router.push(`${this.current}`);
+    }
+  },
+  methods: {
+    index(){
+      this.$router.push(`/`);
+
+    }
   }
 };
 </script>
