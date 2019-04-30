@@ -1,40 +1,81 @@
 <template>
-  <div class="intro_content">
-    <div class="img">
-      <img
-        width="100%"
-        height="100%"
-        src="http://www.zhongzhiwealth.com/uploads/allimg/180427/1_180427085954_1.png"
-        alt
-      >
+  <div class="join_content">
+    <div class="content_top">
+      <div class="join_tel">
+        <i class="iconfont">&#xe603;</i>
+        <div class>
+          <span>联系电话 : 021-88888888</span>
+          <span>电子邮箱 : 297138663@qq.com</span>
+        </div>
+      </div>
+      <div class="join_mail">
+        <!-- <i class="iconfont">&#xe7ed;</i>
+        <span>电子邮箱 : 297138663@qq.com</span>-->
+        <i class="iconfont">&#xe610;</i>
+        <span>公司地址 : 北京市东城区建国门内大街19号</span>
+      </div>
     </div>
-    <div class="content">
-      <!-- <p>中迪投资有限公司成立于2014年12月5日，注册资本人民币10亿元。中植财富是中植企业集团内的重要公司，旗下拥有四家卓越的财富管理公司和一家优秀的保险经纪公司，旨在为高净值客户群体提供专业化综合金融服务，帮助客户实现资产全球配置及财富世代传承。中植财富在中国第三方财富管理市场中有重要的地位，拥有稳定的客户群体，累计为超过17万名高净值客户提供综合金融服务。</p> -->
+    <div class="content_fot">
+      <aMap/>
     </div>
   </div>
 </template>
 
 <script>
+import aMap from "../../Public/aMap";
 export default {
-    created () {
-        this.$store.commit('setBreadList',{first:'加入我们',second:'联系我们'})
-    },
+  components: {
+    aMap
+  },
+  created() {
+    this.$store.commit("setBreadList", {
+      first: "加入我们",
+      second: "联系我们"
+    });
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.intro_content {
+.join_content {
   min-height: 500px;
   width: 800px;
-  // border: 1px solid red;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #fff;
   background: #fff;
-  .content {
-    margin-top: 20px;
-    font-size: 14px;
-    line-height: 2;
-    color: #666;
-    margin-bottom: 20px;
+  > div {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .join_tel,
+    .join_mail {
+      width: 350px;
+      height: 70%;
+      border: 2px solid #ad8757;
+      padding: 30px 10px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      .iconfont {
+        font-size: 60px;
+        // color: #ad8757;
+      }
+      span {
+        display: block;
+        font-size: 15px;
+        // color: #ad8757;
+      }
+    }
+  }
+  .content_fot {
+    overflow: hidden;
+    // border: 1px solid #ad8757;
   }
 }
 </style>

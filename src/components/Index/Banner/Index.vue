@@ -13,18 +13,18 @@ export default {
         {
           id: 1,
           url:
-            "http://www.zhongzhiwealth.com/uploads/170504/1-1F504122019519.jpg"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557109227&di=f13b64f1c2db99266f816b75409a5a9c&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0179465ab45a73a801218207e0987f.jpg%402o.jpg"
         },
-        {
-          id: 2,
-          url:
-            "http://www.zhongzhiwealth.com/uploads/allimg/170512/1-1F5121R9250-L.jpg"
-        },
-        {
+         {
           id: 3,
           url:
-            "http://www.zhongzhiwealth.com/uploads/170504/1-1F504122114U7.jpg"
-        }
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557109227&di=f13b64f1c2db99266f816b75409a5a9c&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0179465ab45a73a801218207e0987f.jpg%402o.jpg"
+        },
+        // {
+        //   id: 2,
+        //   url:
+        //     "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556514458618&di=f1fd8168cf1f34ac3ca28e59c456efaa&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01b61155cefcf86ac725baa0374039.jpg%401280w_1l_2o_100sh.jpg"
+        // },
       ]
     };
   }
@@ -40,8 +40,11 @@ export default {
   overflow: hidden;
 }
 img {
-  width: 100%;
-  height: 500px;
+  /* width: 1200px;
+   */
+   width: 100%;
+  /* height: 80%; */
+  height: 550px;
   margin: 0 auto;
 }
 </style>

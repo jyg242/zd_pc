@@ -4,8 +4,8 @@
     <div class="banner_img">
       <img
         width="100%"
-        height="308px"
-        src="http://www.zhongzhiwealth.com/uploads/170407/1-1F40G040502G.jpg"
+        height="400px"
+        src="../../assets/top_banner2.jpg"
         alt
       >
     </div>
@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import Header from "../Index/Header/Index";
-import Footer from "../Index/Footer/Index";
+import Header from "../Index/Header/Index1";
+import Footer from "../Index/Footer/Index1";
 import innerMenu from "../Public/innerMenu/index";
 import breadCrumb from "../Public/Breadcrumb/index";
 
@@ -63,7 +63,7 @@ export default {
 .news_detail {
   
   .banner_img {
-    margin-top: 5px;
+    // margin-top: 5px;
     margin-bottom: 10px;
   }
   .content_all {

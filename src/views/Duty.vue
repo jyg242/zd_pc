@@ -2,16 +2,10 @@
   <div class="about">
     <Header></Header>
     <div class="banner_img">
-      <!-- <img
-        width="100%"
-        height="308px"
-        src="http://www.zhongzhiwealth.com/uploads/170407/1-1F40G04143611.jpg"
-        alt
-      > -->
       <img
         width="100%"
         height="400px"
-        src="../assets/top_banner5.jpg"
+        src="../assets/top_banner4.jpg"
         alt
       >
     </div>
@@ -43,11 +37,11 @@ export default {
     return {
       cs: "集团简介",
       sidebar: {
-        title: "加入我们",
-        title_en: "JOIN US",
+        title: "企业责任",
+        title_en: "DUTY",
         sub_nav: [
-          { id: 1, nav: "联系我们", url: "/join/contact?key=1" },
-          { id: 2, nav: "诚聘英才", url: "/join/recruit?key=2" }
+          { id: 1, nav: "公益事业", url: "/duty/public?key=1" },
+          { id: 2, nav: "慈善事业", url: "/duty/charity?key=2" }
         ]
       }
     };

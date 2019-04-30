@@ -3,16 +3,15 @@
     <div class="content">
       <div class="about_txt">
         <h1>产业布局</h1>
-        <span>DISTRIBUTION</span>
+        <span>Distribution</span>
       </div>
-      <div class="swiper-button-prev " @click="aPrev">
-          <a-icon type="left" />
+      <div class="swiper-button-prev" @click="aPrev">
+        <a-icon type="left"/>
       </div>
-        <div class="swiper-button-next iconfont"  @click="aNext">
-            <a-icon type="right" />
-        </div>
+      <div class="swiper-button-next iconfont" @click="aNext">
+        <a-icon type="right"/>
+      </div>
       <a-carousel autoplay ref="carousel">
-        
         <div class="banner_item">
           <a-card
             hoverable
@@ -82,8 +81,8 @@ export default {
     aNext() {
       this.$refs.carousel.next();
     },
-    aPrev(){
-        this.$refs.carousel.prev();
+    aPrev() {
+      this.$refs.carousel.prev();
     }
   }
 };
@@ -95,7 +94,7 @@ export default {
   position: relative;
   width: 1080px;
   margin: 0 auto;
-    // border: 1px solid red;
+  // border: 1px solid red;
   .about_txt {
     width: 112px;
     padding: 40px 0;
@@ -152,23 +151,24 @@ export default {
     margin: 40px 0 0 81px;
   }
 }
-.swiper-button-prev, .swiper-button-next {
-    width: 50px;
-    height: 50px;
-    background: none;
-    text-align: center;
-    line-height: 50px;
-    font-size: 46px;
-    color: #ad8757;
-    position: absolute;
-    z-index: 101;
-    top: 340px;
-    cursor:pointer;
+.swiper-button-prev,
+.swiper-button-next {
+  width: 50px;
+  height: 50px;
+  background: none;
+  text-align: center;
+  line-height: 50px;
+  font-size: 46px;
+  color: #ad8757;
+  position: absolute;
+  z-index: 101;
+  top: 340px;
+  cursor: pointer;
 }
-.swiper-button-prev{
-    left:-50px;
+.swiper-button-prev {
+  left: -50px;
 }
- .swiper-button-next{
-     left: 1080px;
- }
+.swiper-button-next {
+  left: 1080px;
+}
 </style>

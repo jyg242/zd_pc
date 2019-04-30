@@ -20,7 +20,9 @@ export default {};
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgb(39, 39, 39);
+  // background: rgb(39, 39, 39);
+  background: black;
+
 //   opacity: 0.9;
   display: flex;
   justify-content: center;

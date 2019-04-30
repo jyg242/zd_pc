@@ -8,61 +8,10 @@
       <div class="partner_detail">
         <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div>
-                <img
-                  width="100%"
-                  height="100%"
-                  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555652452177&di=f3d267b4040dc69a083aee958e097dd6&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20150929%2FImg422339892.jpg"
-                  alt
-                >
+            <div class="swiper-slide" v-for="(item ,index) in imgUrl" :key="index">
+              <div v-for="res in item" :key="res.id">
+                <img width="50%" :src="res.url" alt>
               </div>
-              <div>
-                <img
-                  width="100%"
-                  height="100%"
-                  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555652452177&di=f3d267b4040dc69a083aee958e097dd6&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20150929%2FImg422339892.jpg"
-                  alt
-                >
-              </div>
-              <div>
-                <img
-                  width="100%"
-                  height="100%"
-                  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555652452177&di=f3d267b4040dc69a083aee958e097dd6&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20150929%2FImg422339892.jpg"
-                  alt
-                >
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div class="swiper-slide">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div class="swiper-slide">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div class="swiper-slide">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div class="swiper-slide">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div class="swiper-slide">
-              <div></div>
-              <div></div>
-              <div></div>
             </div>
           </div>
           <!-- 如果需要分页器 -->
@@ -109,7 +58,7 @@
               role="button"
               aria-label="Go to slide 7"
             ></span>
-          </div> -->
+          </div>-->
         </div>
       </div>
     </div>
@@ -124,12 +73,117 @@ export default {
     Swiper
   },
   data() {
-    return {};
+    return {
+      imgUrl: [
+        [
+          {
+            id: 1,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          },
+          {
+            id: 2,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/180823/1-1PR3091251305.png"
+          },
+          {
+            id: 3,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143244302.png"
+          }
+        ],
+        [
+          {
+            id: 4,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143J9444.png"
+          },
+          {
+            id: 5,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          },
+          {
+            id: 6,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          }
+        ],
+        [
+          {
+            id: 7,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          },
+          {
+            id: 8,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          },
+          {
+            id: 9,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          }
+        ],
+        [
+          {
+            id: 10,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          },
+          {
+            id: 11,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/180823/1-1PR3091251305.png"
+          },
+          {
+            id: 12,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143244302.png"
+          }
+        ],
+        [
+          {
+            id: 13,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143J9444.png"
+          },
+          {
+            id: 14,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          },
+          {
+            id: 15,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          }
+        ],
+        [
+          {
+            id: 16,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          },
+          {
+            id: 17,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          },
+          {
+            id: 18,
+            url:
+              "http://www.zhongzhiwealth.com/uploads/170406/1-1F406143105527.png"
+          }
+        ]
+      ]
+    };
   },
   methods: {
     initSwiper() {
       var swiper = new Swiper(".swiper-container", {
-        autoplay:true,
+        autoplay: true,
         slidesPerView: 4,
         spaceBetween: 30,
         pagination: {
@@ -204,9 +258,11 @@ export default {
   div {
     height: 80px;
     border: 1px solid #ad8757;
+    text-align: center;
+    line-height: 80px;
   }
 }
 .swiper-container-horizontal > .swiper-pagination-bullets {
-    bottom: -6px;
+  bottom: -6px;
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="content">
       <div class="about_txt">
         <h1>公司动态</h1>
-        <span>NEWS</span>
+        <span>News</span>
       </div>
       <div class="index_news">
         <div class="news_list">
@@ -62,7 +62,7 @@
             >
           </a>
         </div>
-        <div class="news_btn Animate AnimateOn">
+        <div class="news_btn Animate AnimateOn" @click="$router.push('/news/company?key=1')">
           <span>了解详细</span>
         </div>
       </div>
@@ -205,6 +205,11 @@ export default {};
         text-align: center;
         line-height: 50px;
         // color: #fff;
+        &:hover{
+          background: #1a9fca;
+          // transition: ;
+          color: #fff;
+        }
       }
     }
   }

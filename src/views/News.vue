@@ -4,8 +4,8 @@
     <div class="banner_img">
       <img
         width="100%"
-        height="308px"
-        src="http://www.zhongzhiwealth.com/uploads/170407/1-1F40G3053R94.jpg"
+        height="400px"
+        src="../assets/top_banner2.jpg"
         alt
       >
     </div>
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import Header from "../components/Index/Header/Index";
-import Footer from "../components/Index/Footer/Index";
+import Header from "../components/Index/Header/Index1";
+import Footer from "../components/Index/Footer/Index1";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
 

@@ -3,13 +3,13 @@
     <div class="content">
       <div class="about_txt">
         <h1>关于我们</h1>
-        <span>ABOUT US</span>
+        <span>About us</span>
       </div>
       <div class="about_img">
         <img :src="img" alt>
       </div>
       <div class="about_us">
-        <p>中迪投资成立于xx年xx月xx日，注册资本人民币xx亿元，旨在为高净值客户群体提供专业化综合金融服务，帮助客户实现资产全球配置及财富世代传承</p>
+        <p>中迪投资成立于2012年12月12日，注册资本人民币1212亿元，旨在为高净值客户群体提供专业化综合金融服务，帮助客户实现资产全球配置及财富世代传承</p>
       </div>
       <div class="about-detail">
         <a-button type="default" size="large">了解详细</a-button>
@@ -47,22 +47,24 @@ export default {
   .about-detail {
     width: 1200px;
     position: absolute;
-    top: 430px;
+    top: 450px;
     text-align: center;
   }
   .about_us {
     width: 1200px;
     position: absolute;
     text-align: center;
-    top: 380px;
+    top: 395px;
     p {
-      font-size: 15px;
-      line-height: 24px;
+      // font-size: 16px;
+      // line-height: 24px;
       height: 55px;
       text-overflow: ellipsis;
       overflow: hidden;
       text-align: center;
       color: #666;
+      // color: #ad8757;
+      font: 15px/24px 微软雅黑;
     }
   }
   .about_txt {

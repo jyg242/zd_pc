@@ -42,7 +42,7 @@
 export default {
     methods: {
         go() {
-            this.$router.push({path:'/detail',query:{uid:2}})
+            this.$router.push({path:'/new_detail',query:{uid:2}})
         }
     },
     created () {

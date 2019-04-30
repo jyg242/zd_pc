@@ -2,16 +2,10 @@
   <div class="about">
     <Header></Header>
     <div class="banner_img">
-      <!-- <img
-        width="100%"
-        height="308px"
-        src="http://www.zhongzhiwealth.com/uploads/170407/1-1F40G04143611.jpg"
-        alt
-      > -->
       <img
         width="100%"
         height="400px"
-        src="../assets/top_banner5.jpg"
+        src="../assets/top_banner3.jpg"
         alt
       >
     </div>
@@ -31,23 +25,25 @@ import Header from "../components/Index/Header/Index1";
 import Footer from "../components/Index/Footer/Index1";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
+import Distribution from '../components/Distribution/index'
 
 export default {
   components: {
     Header,
     Footer,
     innerMenu,
-    breadCrumb
+    breadCrumb,
+    Distribution
   },
   data() {
     return {
       cs: "集团简介",
       sidebar: {
-        title: "加入我们",
-        title_en: "JOIN US",
+        title: "产业布局",
+        title_en: "DISTRIBUTION",
         sub_nav: [
-          { id: 1, nav: "联系我们", url: "/join/contact?key=1" },
-          { id: 2, nav: "诚聘英才", url: "/join/recruit?key=2" }
+          { id: 1, nav: "参股股份制银行", url: "/distribution/list_1?key=1" },
+          { id: 2, nav: "非银行金融服务", url: "/distribution/list_1?key=2" }
         ]
       }
     };

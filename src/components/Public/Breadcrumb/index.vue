@@ -16,20 +16,24 @@ export default {
       first: "一级菜单",
       second: "二级菜单"
     };
-  },
- 
+  }
 };
 </script>
 <style lang="scss" scoped>
 .breadcrumb {
-  // box-sizing: border-box;
-  // line-height: 44px;
-  // border:1px solid red;
   margin-bottom: 15px;
   .ant-breadcrumb {
     // width: 800px;
     line-height: 44px;
-    border-bottom: 1px solid #ad8757;
+    border-bottom: 2px solid #ad8757;
+    color: #ad8757;
+    font-weight: 700;
+    > span:last-child {
+      color: #ad8757;
+    }
+    a {
+      color: #ad8757;
+    }   
   }
 }
 </style>

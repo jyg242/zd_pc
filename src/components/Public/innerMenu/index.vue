@@ -12,7 +12,9 @@
           :key="item.id"
           :class="{active:item.id==isShow}"
           @click="active(item.id,item.url)"
-        >{{item.nav}}</li>
+        >{{item.nav}}   
+        <i class="iconfont">&#xe6f6;</i>
+        </li>
       </ul>
     </div>
   </div>
@@ -48,41 +50,53 @@ export default {
 
 <style lang="scss" scoped>
 .inner_menu {
-  width: 210px;
+  margin-top: 46px;
+  width: 250px;
   overflow: hidden;
   .menu_title {
     padding: 20px;
     height: 110px;
-    background: #ad8757;
-    opacity: 0.9;
-    color: #ffffff;
+    background: #1d1626;
+    // opacity: 0.9;
+    // color: #ffffff;
+      color:#ad8757;
+
     .border_btn {
-      width: 90px;
-      border-bottom: 1px solid #ffffff;
+      width: 210px;
+      border-bottom: 1px solid #ad8757;
       margin-bottom: 5px;
     }
     h2 {
-      color: #ffffff;
+      // color: #ffffff;
+      color:#ad8757;
     }
   }
   .content {
-    margin-top: 8px;
+    margin-top: 25px;
     ul {
       margin: 0;
       padding: 0;
       li {
         background: #fff;
         height: 45px;
-        // border: 1px solid red;
         line-height: 45px;
         margin-top: 8px;
         padding: 0 20px;
         list-style: none;
+        .iconfont{
+          font-size: 14px;
+          float: right;
+        }
       }
       .active {
-        background: #ad8757;
-        opacity: .5;
-        color: #fff;
+        // background: #ad8757;
+    background: #1d1626;
+
+        // opacity: .5;
+        // color: #fff;
+      color:#ad8757;
+    font-weight: 700;
+
       }
     }
   }

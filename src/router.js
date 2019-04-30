@@ -10,84 +10,121 @@ let router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [{
-            path: '/',
-            name: 'index',
-            component: Index
-        },
-        {
-            path: '/load',
-            name: 'load',
-            component: Load
-        },
-        {
-            path: '/about',
-            name: 'about',
+        path: '/aaaa',
+        name: 'index',
+        component: Index
+    }, {
+        path: '/load',
+        name: 'load',
+        component: Load
+    }, {
+        path: '/about',
+        name: 'about',
+        component: () =>
+            import('./views/About.vue'),
+        children: [{
+            path: '/about/intro',
+            name: 'intro',
             component: () =>
-                import ('./views/About.vue'),
-            children: [{
-                    path: '/about/intro',
-                    name: 'intro',
-                    component: () =>
-                        import ('./components/About/Intro/index.vue')
-                },
-                {
-                    path: '/about/history',
-                    name: 'history',
-                    component: () =>
-                        import ('./components/About/History/index.vue')
-                }
-            ]
-        },
-        {
-            path: '/news',
-            name: 'news',
+                import('./components/About/Intro/index.vue')
+        }, {
+            path: '/about/history',
+            name: 'history',
             component: () =>
-                import ('./views/News.vue'),
-            children: [{
-                path: '/news/company',
-                name: 'company',
-                component: () =>
-                    import ('./components/News/Company/index.vue')
-            }, {
-                path: '/news/media',
-                name: 'media',
-                component: () =>
-                    import ('./components/News/Media/index.vue')
-
-            }, {
-                path: '/news/notice',
-                name: 'notice',
-                component: () =>
-                    import ('./components/News/Notice/index.vue')
-            }, ]
+                import('./components/About/History/index.vue')
+        }]
+    }, {
+        path: '/news',
+        name: 'news',
+        component: () =>
+            import('./views/News.vue'),
+        children: [{
+            path: '/news/company',
+            name: 'company',
+            component: () =>
+                import('./components/News/Company/index.vue')
+        }, {
+            path: '/news/media',
+            name: 'media',
+            component: () =>
+                import('./components/News/Media/index.vue')
 
         }, {
-
-            path: '/detail',
-            name: 'detail',
+            path: '/news/notice',
+            name: 'notice',
             component: () =>
-                import ('./components/Detail/index.vue')
+                import('./components/News/Notice/index.vue')
+        }]
+
+    }, {
+
+        path: '/new_detail',
+        name: 'new_detail',
+        component: () =>
+            import('./components/Detail/index.vue')
+    }, {
+
+        path: '/rec_detail',
+        name: 'rec_detail',
+        component: () =>
+            import('./components/Detail/index_1.vue')
+    }, {
+        path: '/join',
+        name: 'join',
+        component: () =>
+            import('./views/Join.vue'),
+        children: [{
+            path: '/join/contact',
+            name: 'contact',
+            component: () =>
+                import('./components/Join/contact/index.vue')
         }, {
-            path: '/join',
-            name: 'join',
+            path: '/join/recruit',
+            name: 'recruit',
             component: () =>
-                import ('./views/Join.vue'),
-            children: [{
-                path: '/join/contact',
-                name: 'contact',
-                component: () =>
-                    import ('./components/Join/contact/index.vue')
-
-            }]
-        }
-
+                import('./components/Join/recruit/index.vue')
+        }]
+    }, {
+        path: '/distribution',
+        name: 'distribution',
+        component: () => import('./views/Distribution.vue'),
+        children: [{
+            path: '/distribution/list_1',
+            name: 'distribution1',
+            component: () => import('./components/Distribution/index.vue')
+        }, {
+            path: '/distribution/list_2',
+            name: 'distribution2',
+            component: () => import('./components/Distribution/index.vue')
+        }]
+    }, {
+        path: '/duty',
+        name: 'duty',
+        component: () =>
+            import('./views/Duty.vue'),
+        children: [{
+            path: '/duty/public',
+            name: 'public',
+            component: () =>
+                import('./components/Duty/public.vue')
+        }, {
+            path: '/duty/charity',
+            name: 'charity',
+            component: () =>
+                import('./components/Duty/charity.vue')
+        }]
+    },{
+        path: '/',
+        name: 'index1',
+        component: ()=>import('../src/views/index1.vue')
+    }
     ]
 })
 router.beforeEach((to, from, next) => {
     Nprogress.start()
     next()
 })
-router.afterEach((next, from, to) => {
+router.afterEach((to, from, next) => {
     Nprogress.done()
 })
 export default router

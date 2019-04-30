@@ -39,7 +39,7 @@
         <h4>与我们合作</h4>
         <p>为高净值客户群体提供专业化综合金融服务，帮助客户实现资产全球配置及财富世代传承。</p>
         
-        <h4><i class="iconfont">&#xe603;</i>010-88888888</h4>
+        <h4><i class="iconfont">&#xe608;</i>010-88888888</h4>
         <h4><i class="iconfont">&#xe7ed;</i>297138336@qq.com</h4>
       </div>
       <div class="copyright">
@@ -117,8 +117,9 @@ export default {};
         font-size: 24px;
         color: #FFFFFF;
         line-height: 52px;
-        i{
+        .iconfont{
             margin-right: 10px;
+            font-size: 24px;
         }
       }
     }

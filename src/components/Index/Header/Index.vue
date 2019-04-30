@@ -20,16 +20,18 @@
           <a-menu-item key="/news/notice?key=3">公司公告</a-menu-item>
         </a-sub-menu>
         <a-sub-menu>
-          <span slot="title" class="submenu-title-wrapper">产业布局</span>
-          <a-menu-item key="setting:6">测试项目</a-menu-item>
+          <span slot="title" class="submenu-title-wrapper" @click="$router.push(`/distribution/list_1?key=1`)">产业布局</span>
+          <!-- <a-menu-item key="setting:6">测试项目</a-menu-item> -->
         </a-sub-menu>
         <a-sub-menu>
           <span slot="title" class="submenu-title-wrapper">企业责任</span>
+          <a-menu-item key="/duty/public?key=1">公益事业</a-menu-item>
+          <a-menu-item key="/duty/charity?key=2">慈善事业</a-menu-item>
         </a-sub-menu>
         <a-sub-menu>
           <span slot="title" class="submenu-title-wrapper">加入我们</span>
           <a-menu-item key="/join/contact?key=1">联系我们</a-menu-item>
-          <a-menu-item key="setting:8">诚聘英才</a-menu-item>
+          <a-menu-item key="/join/recruit?key=2">诚聘英才</a-menu-item>
         </a-sub-menu>
       </a-menu>
     </div>
@@ -54,7 +56,9 @@ export default {
   methods: {
     index(){
       this.$router.push(`/`);
-
+    },
+    cs(){
+alert(111)
     }
   }
 };
