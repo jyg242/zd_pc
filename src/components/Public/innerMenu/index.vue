@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { log } from "util";
+// import { log } from "util";
 export default {
   props: ["list"],
   data() {
@@ -53,6 +53,7 @@ export default {
   margin-top: 46px;
   width: 250px;
   overflow: hidden;
+  // border: 1px solid red;
   .menu_title {
     padding: 20px;
     height: 110px;

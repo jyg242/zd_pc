@@ -35,11 +35,17 @@ export default {
   width: 800px;
   min-height: 500px;
   margin-bottom: 50px;
+  padding: 20px;
+  background: #fff;
   h1 {
     margin: 10px 0;
   }
   p {
     font-size: 16px;
+  }
+  div{
+    // border: 1px solid red;
+    text-align: center;
   }
 }
 </style>

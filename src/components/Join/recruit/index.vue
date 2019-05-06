@@ -53,7 +53,9 @@ export default {
       overflow: hidden;
       background: #fff;
       width: 800px;
-      height: 180px;
+      // height: 180px;
+      height: 125px;
+
       list-style: none;
       display: flex;
       justify-content: space-between;

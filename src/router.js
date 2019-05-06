@@ -36,7 +36,7 @@ let router = new Router({
     }, {
         path: '/news',
         name: 'news',
-        component: () =>
+        component:() =>
             import('./views/News.vue'),
         children: [{
             path: '/news/company',
@@ -113,18 +113,45 @@ let router = new Router({
             component: () =>
                 import('./components/Duty/charity.vue')
         }]
-    },{
+    }, {
         path: '/',
         name: 'index1',
-        component: ()=>import('../src/views/index1.vue')
+        component: () => import('../src/views/index1.vue')
+    }, {
+        path: '/login',
+        name: 'login',
+        component: () => import('../src/views/Login.vue')
+    }, {
+        path: '/admin',
+        name: 'admin',
+        component: () => import('../src/views/Admin.vue')
     }
     ]
 })
 router.beforeEach((to, from, next) => {
+    //进度条
     Nprogress.start()
     next()
+    // 登录权限 admin
+    let isLogin = localStorage.getItem('isLogin') || undefined
+    if (to.name == 'admin') {
+        if (!isLogin) {
+            router.push('/login')
+        } else {
+            next()
+        }
+    }
+    //login状态判断
+    if(to.name=='login'){
+        if(isLogin=='admin'){
+            alert('您已登录')
+            router.push('admin')
+        }
+    }
+    
 })
 router.afterEach((to, from, next) => {
     Nprogress.done()
 })
+
 export default router

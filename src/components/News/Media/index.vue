@@ -39,16 +39,18 @@ export default {
       overflow: hidden;
       background: #fff;
       width: 800px;
-      height: 180px;
+      // height: 180px;
+      height: 152px;
+
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px;
+      padding: 5px;
       margin-bottom: 15px;
       img {
         width: 225px;
-        height: 150px;
+        height: 140px;
       }
       .title {
         width: 500px;
