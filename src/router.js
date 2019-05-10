@@ -36,7 +36,7 @@ let router = new Router({
     }, {
         path: '/news',
         name: 'news',
-        component:() =>
+        component: () =>
             import('./views/News.vue'),
         children: [{
             path: '/news/company',
@@ -48,22 +48,18 @@ let router = new Router({
             name: 'media',
             component: () =>
                 import('./components/News/Media/index.vue')
-
         }, {
             path: '/news/notice',
             name: 'notice',
             component: () =>
                 import('./components/News/Notice/index.vue')
         }]
-
     }, {
-
         path: '/new_detail',
         name: 'new_detail',
         component: () =>
             import('./components/Detail/index.vue')
     }, {
-
         path: '/rec_detail',
         name: 'rec_detail',
         component: () =>
@@ -124,7 +120,60 @@ let router = new Router({
     }, {
         path: '/admin',
         name: 'admin',
-        component: () => import('../src/views/Admin.vue')
+        component: () => import('../src/views/Admin.vue'),
+        children: [{
+            path: '/admin/update_img',
+            name: 'update_img',
+            component: () => import('./components/Admin/imgList/update_img.vue')
+        }, {
+            path: '/admin/add_img',
+            name: 'add_img',
+            component: () => import('./components/Admin/imgList/add_img.vue')
+        }, {
+            path: '/admin/add_news',
+            name: 'add_news',
+            component: () => import('./components/Admin/newsList/add_news')
+        }, {
+            path: '/admin/update_news',
+            name: 'update_news',
+            component: () => import('./components/Admin/newsList/update_news')
+        }, {
+            path: '/admin/control_industry',
+            name: 'control_industry',
+            component: () => import('./components/Admin/industry/control_industry.vue')
+        }, {
+            path: '/admin/add_industry',
+            name: 'add_industry',
+            component: () => import('./components/Admin/industry/add_industry.vue')
+        }, {
+            path: '/admin/add_duty',
+            name: 'add_duty',
+            component: () => import('./components/Admin/dutyList/add_duty.vue')
+        }, {
+            path: '/admin/update_duty',
+            name: 'update_duty',
+            component: () => import('./components/Admin/dutyList/update_duty.vue')
+        }, {
+            path: '/admin/add_recruit',
+            name: 'add_recruit',
+            component: () => import('./components/Admin/recruitList/add_recruit.vue')
+        }, {
+            path: '/admin/reomove_recruit',
+            name: 'reomove_recruit',
+            component: () => import('./components/Admin/recruitList/remove_recruit.vue')
+        }, {
+            path: '/admin/edit',
+            name: 'industry_edit',
+            component: () => import('./components/Admin/industry/edit.vue')
+        }, {
+            path: '/admin/edit_news',
+            name: 'news_edit',
+            component: () => import('./components/Admin/newsList/edit_news.vue')
+        }, {
+            path: '/admin/edit_duty',
+            name: 'duty_edit',
+            component: () => import('./components/Admin/dutyList/eidt_duty.vue')
+        }]
     }
     ]
 })
@@ -142,13 +191,13 @@ router.beforeEach((to, from, next) => {
         }
     }
     //login状态判断
-    if(to.name=='login'){
-        if(isLogin=='admin'){
+    if (to.name == 'login') {
+        if (isLogin == 'admin') {
             alert('您已登录')
             router.push('admin')
         }
     }
-    
+
 })
 router.afterEach((to, from, next) => {
     Nprogress.done()

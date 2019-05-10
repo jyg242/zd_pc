@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        breadeList: {}
+        breadeList: {},
+        title:'未知'
     },
     mutations: {
         setBreadList(state, item) {
             state.breadeList = item
+        },
+        default_title(state,item){
+            state.title=item
         }
     },
     actions: {
