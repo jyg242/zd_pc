@@ -25,6 +25,8 @@ import Partner from "../components/Index/Partner/Index.vue";
 import Footer from "../components/Index/Footer/Index.vue";
 import Loading from "../components/Loading/Loading";
 
+import serviceApi from '../api/axios.js'
+
 export default {
   components: {
     Header,
@@ -41,10 +43,14 @@ export default {
       isLoading: true
     }
   },
+  methods: {
+    
+  },
   mounted() {
     
     // 初始化页面数据
     this.loadPageData()
+    this.imageDate()
   },
   
   methods:{

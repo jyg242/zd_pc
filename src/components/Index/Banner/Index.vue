@@ -3,12 +3,15 @@
     <div v-for="item in banner" :key="item.id">
       <img :src="item.url" alt>
     </div>
+    <!-- <div>{{this.$store.state.images}}</div> -->
   </a-carousel>
 </template>
 <script>
 export default {
   data() {
+    // let banner=this.$store.state.banner_images
     return {
+      // banner:this.$store.state.banner_images,
       banner: [
         {
           id: 1,
@@ -27,8 +30,17 @@ export default {
         // },
       ]
     };
-  }
+  },
+  mounted () {
+    let res=this.$store.state.banner_images
+    // console.log(JSON.parse(JSON.stringify(res)))
+    console.log('111'+this.$store.state.banner_images)
+
+    // console.log('内容为'+this.banner[0]);
+
+  },
 };
+
 </script>
 <style scoped>
 /* For demo */
