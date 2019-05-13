@@ -120,58 +120,72 @@ let router = new Router({
     }, {
         path: '/admin',
         name: 'admin',
+        meta: { requireAuth: true },
         component: () => import('../src/views/Admin.vue'),
         children: [{
             path: '/admin/update_img',
             name: 'update_img',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/imgList/update_img.vue')
         }, {
             path: '/admin/add_img',
             name: 'add_img',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/imgList/add_img.vue')
         }, {
             path: '/admin/add_news',
             name: 'add_news',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/newsList/add_news')
         }, {
             path: '/admin/update_news',
             name: 'update_news',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/newsList/update_news')
         }, {
             path: '/admin/control_industry',
             name: 'control_industry',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/industry/control_industry.vue')
         }, {
             path: '/admin/add_industry',
             name: 'add_industry',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/industry/add_industry.vue')
         }, {
             path: '/admin/add_duty',
             name: 'add_duty',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/dutyList/add_duty.vue')
         }, {
             path: '/admin/update_duty',
             name: 'update_duty',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/dutyList/update_duty.vue')
         }, {
             path: '/admin/add_recruit',
             name: 'add_recruit',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/recruitList/add_recruit.vue')
         }, {
             path: '/admin/reomove_recruit',
             name: 'reomove_recruit',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/recruitList/remove_recruit.vue')
         }, {
             path: '/admin/edit',
             name: 'industry_edit',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/industry/edit.vue')
         }, {
             path: '/admin/edit_news',
             name: 'news_edit',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/newsList/edit_news.vue')
         }, {
             path: '/admin/edit_duty',
             name: 'duty_edit',
+            meta: { requireAuth: true },
             component: () => import('./components/Admin/dutyList/eidt_duty.vue')
         }]
     }
@@ -183,20 +197,25 @@ router.beforeEach((to, from, next) => {
     next()
     // 登录权限 admin
     let isLogin = localStorage.getItem('isLogin') || undefined
-    if (to.name == 'admin') {
-        if (!isLogin) {
-            router.push('/login')
-        } else {
+    if (to.meta.requireAuth) {
+        if (isLogin) {
             next()
+        } else {
+            next({
+                path: '/login',
+                query: { redirect: to.fullPath }
+            })
         }
+    } else {
+        next()
     }
-    //login状态判断
-    if (to.name == 'login') {
-        if (isLogin == 'admin') {
-            alert('您已登录')
-            router.push('admin')
-        }
-    }
+    // login状态判断
+    // if (to.name == 'login') {
+    //     if (isLogin == 'admin') {
+    //         alert('您已登录')
+    //         router.push('admin')
+    //     }
+    // }
 
 })
 router.afterEach((to, from, next) => {

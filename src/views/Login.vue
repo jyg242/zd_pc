@@ -66,7 +66,9 @@ export default {
        let userPwd=this.userPwd;
         if(userName=='admin'&&userPwd=='123'){
             localStorage.setItem('isLogin','admin')
-            this.$router.push('/admin')
+            this.$router.push({
+              path:this.$route.query.redirect||'/'
+            })
         }else{
             this.$message.error('账号或密码错误');
         }
