@@ -6,7 +6,7 @@
       </transition>
     </div>
     <Header class="header"></Header>
-    <Banner></Banner>
+    <Banner ></Banner>
     <Content></Content>
     <Footer></Footer>
   </div>
@@ -18,9 +18,7 @@ import Banner from "../components/Index/Banner/Index.vue";
 import Content from "../components/Index/Content/index";
 import Footer from "../components/Index/Footer/Index1";
 import Loading from "../components/Loading/Loading";
-import serviceApi from '../api/axios.js'
-
-
+import serviceApi from "../api/axios.js";
 export default {
   components: {
     Header,
@@ -28,18 +26,17 @@ export default {
     Content,
     Footer,
     Loading
-
   },
   data() {
     return {
-      isLoading: true
+      isLoading: true,
+      img: []
     };
   },
   mounted() {
     // 初始化页面数据
     this.loadPageData();
-    this.imageDate()
-    
+    this.imageDate();
   },
 
   methods: {
@@ -49,14 +46,13 @@ export default {
         this.isLoading = false;
       }, 1000);
     },
-    async imageDate() {
-      let {status,data}=await serviceApi('/banner/getImg')
-      if(status==200){
-        // console.log(data.data)
-        this.$store.dispatch('setAllimages',data.data)
-        // this.$store.commit('setImages',data.data)
+    imageDate() {
+      // let {status,data}=await serviceApi('/banner/getImg')
+      // if(status==200){
+      //   let res=data.data
+      this.$store.dispatch("setAllimages");
+      this.$store.dispatch("setAllnews");
 
-      }
     }
   }
 };

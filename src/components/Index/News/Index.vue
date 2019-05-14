@@ -71,7 +71,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  // mounted() {
+  //   let content = this.$route.params;
+  //   console.log(content);
+  //   console.log(111)
+  // }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -114,7 +120,7 @@ export default {};
     }
     .index_news {
       height: 550px;
-    //   border: 1px solid red;
+      //   border: 1px solid red;
       display: flex;
       justify-content: space-between;
       .news_list {
@@ -187,7 +193,7 @@ export default {};
         // margin-right: 25px;
         width: 320px;
         height: 250px;
-        
+
         // border: 1px solid red;
         border-top-left-radius: 20px;
         border-bottom-right-radius: 20px;
@@ -205,7 +211,7 @@ export default {};
         text-align: center;
         line-height: 50px;
         // color: #fff;
-        &:hover{
+        &:hover {
           background: #1a9fca;
           // transition: ;
           color: #fff;

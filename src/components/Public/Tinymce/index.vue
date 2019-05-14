@@ -149,7 +149,7 @@ export default {
       default: () => {
         return {
           theme: "modern",
-          height: 400
+          height: 320
         };
       }
     },

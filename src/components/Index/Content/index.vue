@@ -7,14 +7,6 @@
             <i class="iconfont">&#xe631;</i>热点新闻
           </h3>
           <div class="list">
-            <!-- <dl>
-              <dt>2017.03.31</dt>
-              <dd>实力扩张 重归百强</dd>
-            </dl>
-            <dl>
-              <dt>2017.03.31</dt>
-              <dd>实力扩张 重归百强</dd>
-            </dl>-->
             <newsBanner/>
           </div>
         </div>

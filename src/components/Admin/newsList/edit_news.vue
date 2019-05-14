@@ -6,11 +6,26 @@
     </div>
     <div class="news_type">
       <span style="color:black;margin-right:10px">新闻类型 :</span>
-      <a-select :size="size" :defaultValue="this.$store.state.title" style="width: 200px" @change="handleChange">
+      <a-select
+        :size="size"
+        :defaultValue="this.$store.state.title"
+        style="width: 200px"
+        @change="handleChange"
+      >
         <a-select-option v-for="i in arr" :key="i.type">{{i.name}}</a-select-option>
       </a-select>
       <span style="color:black;margin-right:10px;margin-left:40px">新闻作者 :</span>
       <a-input placeholder="Basic usage" v-model="auth"/>
+      <span style="color:black;margin-right:10px;margin-left:40px">来源 :</span>
+      <a-input placeholder="Basic usage" v-model="from"/>
+    </div>
+    <div class="news_img">
+      <span style="color:black;margin-right:10px;">缩略小图 :</span>
+      <a-input placeholder="Basic usage" v-model="img_min"/>
+    </div>
+    <div class="news_intro">
+      <span style="color:black;margin-right:10px;">新闻简介 :</span>
+      <a-input placeholder="Basic usage" v-model="intro"/>
     </div>
     <tinymce-my ref="tiny" @getContent="newsAll" :value="childValue"></tinymce-my>
     <a-button @click="go_a" style="margin-top:10px;margin-left:92%">修改</a-button>
@@ -31,7 +46,10 @@ export default {
       auth: "",
       type: 0,
       title: "",
-      t_val:'1',
+      from: "中迪投资",
+      img_min: "",
+      intro: "",
+      t_val: "1",
       arr: [
         { type: 1, name: "公司新闻" },
         { type: 2, name: "行业新闻" },
@@ -49,8 +67,8 @@ export default {
           title: this.title,
           content: res,
           id: this.lid,
-          auth:this.auth,
-          type:this.type
+          auth: this.auth,
+          type: this.type
         });
         if (data.data.status == 200 && data.data.data == "修改成功") {
           this.$info({
@@ -80,17 +98,20 @@ export default {
       let res = data.data.data;
       console.log(data.data.data);
       res.map(item => {
-        this.lid=item._id
-        this.title=item.TITLE
-        this.type=item.TYPE
-        this.auth=item.AUTH
-        this.childValue=item.CONTENT   
+        this.lid = item._id;
+        this.title = item.TITLE;
+        this.type = item.TYPE;
+        this.auth = item.AUTH;
+        this.childValue = item.CONTENT;
+        this.from=item.FROM;
+        this.intro=item.INTRO;
+        this.img_min=item.IMG_MIN;
       });
     }
   },
   mounted() {
     let id = this.$route.params.key;
-    console.log(this.$store.state.title)
+    console.log(this.$store.state.title);
     this.lid = id;
     if (id != null) this.getimg(id);
   }
@@ -99,7 +120,9 @@ export default {
 <style lang="scss" scoped>
 //
 .news_type,
-.news_title {
+.news_title,
+.news_img,
+.news_intro {
   margin-bottom: 20px;
 }
 .news_type .ant-input {
@@ -107,5 +130,11 @@ export default {
 }
 .news_title .ant-input {
   width: 513px;
+}
+.news_img .ant-input {
+  width: 300px;
+}
+.news_intro .ant-input {
+  width: 800px;
 }
 </style>

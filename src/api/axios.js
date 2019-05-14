@@ -4,7 +4,7 @@ import { getToken } from './auth';
 
 let service = axios.create({
     baseURL: baseURL,  //api的base_url
-    timeout: 5000,//request timeout
+    // timeout: 5000,//request timeout
     header: {
         'content-type': 'application/x-www-form-urlencoded'
     },

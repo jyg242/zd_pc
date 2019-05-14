@@ -1,36 +1,12 @@
 <template>
   <div class="news_company">
     <ul>
-      <li>
+      <li v-for="item in company_News" :key="item._id">
         <img src="http://www.zhongzhiwealth.com/uploads/180702/2-1PF21T315494.jpg" alt>
         <span class="title">
-          <h3 @click="go">双星报喜：“大唐元一”与“大唐元山”斩获母...</h3>
-          <p>2018-07-02</p>
-          <p>2018年6月26日，由《母基金周刊》主办的LP之夜母基金周刊年中盛典在北京前门23号Blue Note Beijing盛大开启， 200余位母基金行业精英齐聚一堂，共话新形势下母基金行业的机遇与挑战，大唐...</p>
-        </span>
-      </li>
-      <li>
-        <img src="http://www.zhongzhiwealth.com/uploads/180702/2-1PF21T315494.jpg" alt>
-        <span class="title">
-          <h3>双星报喜：“大唐元一”与“大唐元山”斩获母...</h3>
-          <p>2018-07-02</p>
-          <p>2018年6月26日，由《母基金周刊》主办的LP之夜母基金周刊年中盛典在北京前门23号Blue Note Beijing盛大开启， 200余位母基金行业精英齐聚一堂，共话新形势下母基金行业的机遇与挑战，大唐...</p>
-        </span>
-      </li>
-      <li>
-        <img src="http://www.zhongzhiwealth.com/uploads/180702/2-1PF21T315494.jpg" alt>
-        <span class="title">
-          <h3>双星报喜：“大唐元一”与“大唐元山”斩获母...</h3>
-          <p>2018-07-02</p>
-          <p>2018年6月26日，由《母基金周刊》主办的LP之夜母基金周刊年中盛典在北京前门23号Blue Note Beijing盛大开启， 200余位母基金行业精英齐聚一堂，共话新形势下母基金行业的机遇与挑战，大唐...</p>
-        </span>
-      </li>
-      <li>
-        <img src="http://www.zhongzhiwealth.com/uploads/180702/2-1PF21T315494.jpg" alt>
-        <span class="title">
-          <h3>双星报喜：“大唐元一”与“大唐元山”斩获母...</h3>
-          <p>2018-07-02</p>
-          <p>2018年6月26日，由《母基金周刊》主办的LP之夜母基金周刊年中盛典在北京前门23号Blue Note Beijing盛大开启， 200余位母基金行业精英齐聚一堂，共话新形势下母基金行业的机遇与挑战，大唐...</p>
+          <h3 @click="go(item._id)">{{item.TITLE}}</h3>
+          <p>{{timeChange(item.createAt)}}</p>
+          <!-- <p >{{spliceTitle(item.CONTENT,50)}}</p> -->
         </span>
       </li>
     </ul>
@@ -38,10 +14,33 @@
 </template>
 
 <script>
+import spliceTitle from "../../../util/splice_title.js";
+import timeChange from "../../../util/time_change.js";
+import serviceApi from "../../../api/axios.js";
 export default {
+  data() {
+    this.spliceTitle = spliceTitle;
+    this.timeChange = timeChange;
+    return {
+      company_News: []
+    };
+  },
   methods: {
-    go() {
-      this.$router.push({ path: "/new_detail", query: { uid: 2 } });
+    //跳转详情页
+    go(item) {
+      this.$router.push({ path: "/new_detail", query: { content: item } });
+    },
+    //获取新闻列表
+    async getNews() {
+      let type = this.$route.query.key;
+      let {
+        status,
+        data: { data }
+      } = await serviceApi.get("/news/getNews", { params: { key: type } });
+      if(status==200){
+        console.log(data)
+        this.company_News=data
+      }
     }
   },
   created() {
@@ -49,6 +48,7 @@ export default {
       first: "新闻中心",
       second: "公司新闻"
     });
+    this.getNews()
   }
 };
 </script>
