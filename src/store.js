@@ -38,14 +38,10 @@ export default new Vuex.Store({
             });
             //存储公司新闻
             let res_company = item.filter(item => item.TYPE == '1')
-            console.log(res_company)
+            // console.log(res_company)
             res_company.map(item => state.company_news.push(item))
         },
-        //存储新闻
-        //     setNews_all(state, item) {
-        //         let res=item.filter(item=>item.TYPE == '1')//1为公司新闻
-        //         res.map(item=>state.company_news.push(item))
-        //     }
+      
     },
     actions: {
         async setAllimages({ commit }) { //获取图片信息
@@ -60,7 +56,7 @@ export default new Vuex.Store({
             if (status == 200) {
                 let res = data.data
                 commit('setNews', res)
-                console.log(res)
+                // console.log(res)
             }
         }
     }

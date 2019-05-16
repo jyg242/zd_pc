@@ -1,25 +1,11 @@
 <template>
   <div class="news_company">
     <ul>
-      <li>
+      <li v-for="item in res" :key="item._id">
         <span class="title">
-          <h3 @click="go">北京中迪投资股份有限公司2019招聘简章</h3>
-          <p>发布时间 : 2018-07-02</p>
-          <p>■ 高级绩效管理师 工作地点：海口 岗位要求： 1、人力资源、工商管理、统计学等相关专业本科以上学历； 2、熟悉人力资源六大模块，了解现代企业人力资...</p>
-        </span>
-      </li>
-      <li>
-        <span class="title">
-          <h3 @click="go">北京中迪投资股份有限公司2019招聘简章</h3>
-          <p>发布时间 : 2018-07-02</p>
-          <p>■ 高级绩效管理师 工作地点：海口 岗位要求： 1、人力资源、工商管理、统计学等相关专业本科以上学历； 2、熟悉人力资源六大模块，了解现代企业人力资...</p>
-        </span>
-      </li>
-      <li>
-        <span class="title">
-          <h3 @click="go">北京中迪投资股份有限公司2019招聘简章</h3>
-          <p>发布时间 : 2018-07-02</p>
-          <p>■ 高级绩效管理师 工作地点：海口 岗位要求： 1、人力资源、工商管理、统计学等相关专业本科以上学历； 2、熟悉人力资源六大模块，了解现代企业人力资...</p>
+          <h3 @click="go(item)">{{item.title}}</h3>
+          <p>发布时间 : {{timeChange(item.createAt)}}</p>
+          <p>■ {{item.post}} &nbsp;&nbsp;■ 工作地点:{{item.place}} &nbsp;&nbsp;■岗位要求： 1.{{item.items[0]}} &nbsp;&nbsp;2.{{item.items[1]}}...</p>
         </span>
       </li>
     </ul>
@@ -27,10 +13,28 @@
 </template>
 
 <script>
+import serviceApi from "../../../api/axios.js";
+import timeChange from "../../../util/time_change.js";
 export default {
+  data() {
+    this.timeChange = timeChange;
+    return {
+      res: {}
+    };
+  },
   methods: {
-    go() {
-      this.$router.push({ path: "/rec_detail", query: { uid: 2 } });
+    go(item) {
+      this.$router.push({ name: "rec_detail", params: { detail: item } });
+    },
+    async getRecruit() {
+      let {
+        status,
+        data: { data }
+      } = await serviceApi.get("/recruit/getRecruit");
+      if (status == 200 && data) {
+        console.log(data);
+        this.res = data;
+      }
     }
   },
   created() {
@@ -38,6 +42,7 @@ export default {
       first: "加入我们",
       second: "诚聘英才"
     });
+    this.getRecruit();
   }
 };
 </script>
@@ -55,17 +60,16 @@ export default {
       width: 800px;
       // height: 180px;
       height: 125px;
-
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px;
       margin-bottom: 15px;
-
       .title {
         // width: 500px;
         h3 {
+          margin-top: 10px;
           color: rgba(0, 0, 0, 0.85);
           &:hover {
             color: #ad8757;

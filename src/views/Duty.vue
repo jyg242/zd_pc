@@ -1,4 +1,5 @@
 <template>
+<!-- 企业责任 -->
   <div class="about">
     <Header></Header>
     <div class="banner_img">
@@ -13,7 +14,7 @@
       <innerMenu :list="sidebar"></innerMenu>
       <div class="right">
         <breadCrumb></breadCrumb>
-        <router-view :test="cs"></router-view>
+        <router-view :detail="content"></router-view>
       </div>
     </div>
     <Footer></Footer>
@@ -25,6 +26,8 @@ import Header from "../components/Index/Header/Index1";
 import Footer from "../components/Index/Footer/Index1";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
+import serviceApi from "../api/axios.js";
+
 
 export default {
   components: {
@@ -35,17 +38,38 @@ export default {
   },
   data() {
     return {
+      
       cs: "集团简介",
+      content: [],
       sidebar: {
         title: "企业责任",
         title_en: "DUTY",
         sub_nav: [
-          { id: 1, nav: "公益事业", url: "/duty/public?key=1" },
-          { id: 2, nav: "慈善事业", url: "/duty/charity?key=2" }
+          // { id: 1, nav: "公益事业", url: "/duty/public?key=1" },
+          // { id: 2, nav: "慈善事业", url: "/duty/charity?key=2" }
         ]
       }
     };
-  }
+  },
+  methods: {
+    async getDuty() {
+      let {status,data:{data}}=await serviceApi.get('/duty/getDuty')
+      if(status==200&&data){
+        console.log(data)
+        this.sidebar.sub_nav=data.map((item,index)=>{
+          this.content.push(item.content)
+          return{
+            nav:item.title,
+            id:index+1,
+            url:'/duty/public'
+          }
+        })
+      }
+    }
+  },
+  mounted () {
+    this.getDuty();
+  },
 };
 </script>
 

@@ -1,24 +1,24 @@
 <template>
   <div class="distribution_content">
-    <h1>参股股份制银行</h1>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;集团参股海口农商银行、三亚农商银行，进一步完善公司在股份制银行服务领域的产业布局集团参股海口农商银行、三亚农商银行，进一步完善公司在股份制银行服务领域的产业布局集团参股海口农商银行、三亚农商银行，进一步完善公司在股份制银行服务领域的产业布局集团参股海口农商银行、三亚农商银行，进一步完善公司在股份制银行服务领域的产业布局集团参股海口农商银行、三亚农商银行，进一步完善公司在股份制银行服务领域的产业布局。</p>
-    <div>
-      <img
-        src="http://www.firstgroup.com.cn/firstgroup/fg2/fg2_3/fg2_3_2/201702/W020170213590206380010.jpg"
-        alt
-        width="620px"
-        height="410px"
-      >
-    </div>
-    <!-- h2参股股份制银行 -->
+    <div class="detail_con" v-html="detail[index-1]"></div>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    go() {
-      this.$router.push({ path: "/new_detail", query: { uid: 2 } });
+  props: ["detail"],
+  data() {
+    return {
+      index: ""
+    };
+  },
+  watch: {
+    $route: {
+      handler(new1, old1) {
+        let item = new1.query.key;
+        this.index = item;
+      },
+      immediate: true
     }
   },
   created() {
@@ -33,7 +33,7 @@ export default {
 <style lang="scss" scoped>
 .distribution_content {
   width: 800px;
-  min-height: 500px;
+  // min-height: 500px;
   margin-bottom: 50px;
   padding: 20px;
   background: #fff;
@@ -43,9 +43,11 @@ export default {
   p {
     font-size: 16px;
   }
-  div{
+  .detail_con {
     // border: 1px solid red;
     text-align: center;
+  // min-height: 500px;
+
   }
 }
 </style>

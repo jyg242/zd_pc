@@ -7,11 +7,11 @@
     <div class="content_all">
       <breadCrumb></breadCrumb>
       <div class="content_news">
-        <h2>{{news.TITLE}}</h2>
+        <h1>{{news.TITLE}}</h1>
         <p>
-          <!-- <span>来源：{{news.from}}</span> -->
           <span>作者：{{news.AUTH}}</span>
           <span>时间：{{timeChange(news.createAt)}}</span>
+          <span>来源：{{news.FROM}}</span>
         </p>
         <div v-html="news.CONTENT"></div>
       </div>
@@ -26,13 +26,13 @@ import Footer from "../Index/Footer/Index1";
 import innerMenu from "../Public/innerMenu/index";
 import breadCrumb from "../Public/Breadcrumb/index";
 import serviceApi from "../../api/axios.js";
-import timeChange from '../../util/time_change.js'
+import timeChange from "../../util/time_change.js";
 export default {
   data() {
-    this.timeChange=timeChange
+    this.timeChange = timeChange;
     return {
       key: "",
-      news:{}
+      news: {}
     };
   },
   components: {
@@ -51,17 +51,15 @@ export default {
           key: this.key
         }
       });
-      if(status==200&&data){
-        this.news=data[0]
-        console.log(this.news)
+      if (status == 200 && data) {
+        this.news = data[0];
       }
     }
   },
   mounted() {
     let content = this.$route.query.content;
-    console.log(content);
     this.key = content;
-    this.getDetail()
+    this.getDetail();
   }
 };
 </script>
@@ -79,21 +77,21 @@ export default {
     padding: 15px;
     margin: 0px auto 30px;
     background: white;
-
     .content_news {
       margin-top: 50px;
       margin-bottom: 150px;
-
       width: 100%;
       min-height: 300px;
-      h2 {
+      h1 {
         text-align: center;
       }
       p:nth-child(2) {
+        margin-top: 30px;
         font-size: medium;
+        // padding-left: 30px;
         text-align: center;
         span {
-          margin-right: 25px;
+          margin-right: 30px;
         }
       }
       .news_img {

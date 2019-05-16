@@ -1,8 +1,9 @@
 <template>
+<!--  首页新闻标题轮播列表 -->
   <vue-seamless-scroll :data="listData" :class-option="classOption" class="seamless-warp">
     <ul class="item">
-      <li v-for="item in listData" :key="item.id">
-        <span class="title">{{spliceTitle(item.title,17)}}</span>
+      <li v-for="item in listData" :key="item.id" @click="$router.push({path:'/new_detail',query:{content:`${item._id}`}})">
+        <span class="title">{{spliceTitle(item.TITLE,17)}}</span>
       </li>
     </ul>
   </vue-seamless-scroll>
@@ -26,59 +27,25 @@
 </style>
 <script>
 import spliceTitle from "../../../util/splice_title.js";
+import serviceApi from '../../../api/axios.js'
 export default {
   data() {
     this.spliceTitle = spliceTitle;
     return {
-      listData: this.$store.state.index_news || "暂无新闻"
-      // listData: [
-      //   {
-      //     title: "无缝滚动第一行无缝滚动第一行",
-      //     date: "2017-12-16",
-      //     id: 1
-      //   },
-      //   {
-      //     title: "无缝滚动第二行无缝滚动第二行",
-      //     date: "2017-12-16",
-      //     id: 2
-      //   },
-      //   {
-      //     title: "无缝滚动第三行无缝滚动第三行",
-      //     date: "2017-12-16",
-      //     id: 3
-      //   },
-      //   {
-      //     title: "无缝滚动第四行无缝滚动第四行",
-      //     date: "2017-12-16",
-      //     id: 4
-      //   },
-      //   {
-      //     title: "无缝滚动第五行无缝滚动第五行",
-      //     date: "2017-12-16",
-      //     id: 5
-      //   },
-      //   {
-      //     title: "无缝滚动第六行无缝滚动第六行",
-      //     date: "2017-12-16",
-      //     id: 6
-      //   },
-      //   {
-      //     title: "无缝滚动第七行无缝滚动第七行",
-      //     date: "2017-12-16",
-      //     id: 7
-      //   },
-      //   {
-      //     title: "无缝滚动第八行无缝滚动第八行",
-      //     date: "2017-12-16",
-      //     id: 8
-      //   },
-      //   {
-      //     title: "无缝滚动第九行无缝滚动第九行",
-      //     date: "2017-12-16",
-      //     id: 9
-      //   }
-      // ]
+      listData: []
     };
+  },
+  methods: {
+    async getNews_title() {
+      let {status,data:{data}}=await serviceApi.get('/news/getNews')
+      console.log(data)
+      if(status==200&&data){
+        this.listData=data
+      }
+    }
+  },
+  mounted () {
+    this.getNews_title();
   },
   computed: {
     // 公告滚动自定义

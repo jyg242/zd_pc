@@ -2,18 +2,13 @@
   <div class="about">
     <Header></Header>
     <div class="banner_img">
-      <img
-        width="100%"
-        height="400px"
-        src="../assets/top_banner3.jpg"
-        alt
-      >
+      <img width="100%" height="400px" src="../assets/top_banner3.jpg" alt>
     </div>
     <div class="content my_err">
       <innerMenu :list="sidebar"></innerMenu>
       <div class="right">
         <breadCrumb></breadCrumb>
-        <router-view :test="cs"></router-view>
+        <router-view :detail="content"></router-view>
       </div>
     </div>
     <Footer></Footer>
@@ -25,7 +20,8 @@ import Header from "../components/Index/Header/Index1";
 import Footer from "../components/Index/Footer/Index1";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
-import Distribution from '../components/Distribution/index'
+import Distribution from "../components/Distribution/index";
+import serviceApi from "../api/axios.js";
 
 export default {
   components: {
@@ -41,12 +37,34 @@ export default {
       sidebar: {
         title: "产业布局",
         title_en: "DISTRIBUTION",
-        sub_nav: [
-          { id: 1, nav: "参股股份制银行", url: "/distribution/list_1?key=1" },
-          { id: 2, nav: "非银行金融服务", url: "/distribution/list_1?key=2" }
-        ]
-      }
+        sub_nav: []
+      },
+      content: []
     };
+  },
+  methods: {
+    async getDis() {
+      let {
+        status,
+        data: { data }
+      } = await serviceApi.get("/industry/getIndustry");
+      if (status == 200 && data) {
+        let res = data.map((item, index) => {
+          this.content.push(item.content);
+          return {
+            id: index + 1,
+            nav: item.title,
+            conten: item.content,
+            key: item._id,
+            url:'/distribution/list_1'
+          };
+        });
+        this.sidebar.sub_nav = res;
+      }
+    }
+  },
+  mounted() {
+    this.getDis();
   }
 };
 </script>
@@ -64,6 +82,9 @@ export default {
   }
   .my_err {
     margin: 0px auto 30px;
+    // .right{
+    //   background: white;
+    // }
   }
 }
 </style>

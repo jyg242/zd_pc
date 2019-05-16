@@ -12,8 +12,9 @@
           :key="item.id"
           :class="{active:item.id==isShow}"
           @click="active(item.id,item.url)"
-        >{{item.nav}}   
-        <i class="iconfont">&#xe6f6;</i>
+        >
+          {{item.nav}}
+          <i class="iconfont">&#xe6f6;</i>
         </li>
       </ul>
     </div>
@@ -21,7 +22,6 @@
 </template>
 
 <script>
-// import { log } from "util";
 export default {
   props: ["list"],
   data() {
@@ -31,19 +31,18 @@ export default {
     };
   },
   methods: {
-    active(id,url) {
+    active(id, url) {
       this.isShow = id;
-      this.$router.push(url)
-     
+      this.$router.push({ path: url, query: { key: id } });
     }
   },
   watch: {
     $route(to, from) {
-      this.isShow=to.query.key
+      this.isShow = to.query.key;
     }
   },
   created() {
-      this.isShow=this.$route.query.key
+    this.isShow = this.$route.query.key;
   }
 };
 </script>
@@ -60,7 +59,7 @@ export default {
     background: #1d1626;
     // opacity: 0.9;
     // color: #ffffff;
-      color:#ad8757;
+    color: #ad8757;
 
     .border_btn {
       width: 210px;
@@ -69,7 +68,7 @@ export default {
     }
     h2 {
       // color: #ffffff;
-      color:#ad8757;
+      color: #ad8757;
     }
   }
   .content {
@@ -84,20 +83,19 @@ export default {
         margin-top: 8px;
         padding: 0 20px;
         list-style: none;
-        .iconfont{
+        .iconfont {
           font-size: 14px;
           float: right;
         }
       }
       .active {
         // background: #ad8757;
-    background: #1d1626;
+        background: #1d1626;
 
         // opacity: .5;
         // color: #fff;
-      color:#ad8757;
-    font-weight: 700;
-
+        color: #ad8757;
+        font-weight: 700;
       }
     }
   }

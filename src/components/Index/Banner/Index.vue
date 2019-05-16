@@ -6,11 +6,23 @@
   </a-carousel>
 </template>
 <script>
+import serviceApi from '../../../api/axios.js'
 export default {
   data() {
     return {  
-      res:this.$store.state.banner_images,
+      res:{}
     };
+  },
+  methods: {
+    async getBanner() {
+      let {status,data:{data}}=await serviceApi.get('/banner/getImg')
+      if(status==200&&data){
+        this.res=data
+      }
+    }
+  },
+  mounted () {
+    this.getBanner();
   },
 };
 </script>

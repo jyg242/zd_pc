@@ -48,22 +48,23 @@ let router = new Router({
             name: 'media',
             component: () =>
                 import('./components/News/Media/index.vue')
+
         }, {
-            path: '/news/notice',
-            name: 'notice',
+            path: '/news/news_list',
+            name: 'news_list',
             component: () =>
-                import('./components/News/Notice/index.vue')
+                import('./components/News/newsList.vue')
         }]
     }, {
         path: '/new_detail',
         name: 'new_detail',
         component: () =>
-            import('./components/Detail/index.vue')
+            import('./components/News/newsDetail.vue')
     }, {
         path: '/rec_detail',
         name: 'rec_detail',
         component: () =>
-            import('./components/Detail/index_1.vue')
+            import('./components/Join/recruit/recruit_detail.vue')
     }, {
         path: '/join',
         name: 'join',

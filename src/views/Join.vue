@@ -31,6 +31,7 @@ import Header from "../components/Index/Header/Index1";
 import Footer from "../components/Index/Footer/Index1";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
+import serviceApi from '../api/axios.js'
 
 export default {
   components: {
@@ -51,7 +52,18 @@ export default {
         ]
       }
     };
-  }
+  },
+  // methods: {
+  //   async getRecruit() {
+  //     let {status,data:{data}}=await serviceApi.get('/recruit/getRecruit')
+  //     if(status==200&&data){
+  //       console.log(data)
+  //     }
+  //   }
+  // },
+  // mounted () {
+  //   this.getRecruit();
+  // },
 };
 </script>
 

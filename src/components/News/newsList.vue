@@ -2,11 +2,11 @@
   <div class="news_company">
     <ul>
       <li v-for="item in company_News" :key="item._id">
-        <img src="http://www.zhongzhiwealth.com/uploads/180702/2-1PF21T315494.jpg" alt>
+        <img :src="item.IMG_MIN" alt>
         <span class="title">
           <h3 @click="go(item._id)">{{item.TITLE}}</h3>
           <p>{{timeChange(item.createAt)}}</p>
-          <!-- <p >{{spliceTitle(item.CONTENT,50)}}</p> -->
+          <p >{{item.INTRO}}</p>
         </span>
       </li>
     </ul>
@@ -14,15 +14,18 @@
 </template>
 
 <script>
-import spliceTitle from "../../../util/splice_title.js";
-import timeChange from "../../../util/time_change.js";
-import serviceApi from "../../../api/axios.js";
+// import spliceTitle from "../../../util/splice_title.js";
+import spliceTitle from "../../util/splice_title.js";
+import timeChange from "../../util/time_change.js";
+import serviceApi from "../../api/axios.js";
 export default {
   data() {
     this.spliceTitle = spliceTitle;
     this.timeChange = timeChange;
+    // let type = this.$route.query.key;
     return {
-      company_News: []
+      company_News: [],
+      type: this.$route.query.key
     };
   },
   methods: {
@@ -31,16 +34,21 @@ export default {
       this.$router.push({ path: "/new_detail", query: { content: item } });
     },
     //获取新闻列表
-    async getNews() {
-      let type = this.$route.query.key;
+    async getNews(item) {
       let {
         status,
         data: { data }
-      } = await serviceApi.get("/news/getNews", { params: { key: type } });
-      if(status==200){
-        console.log(data)
-        this.company_News=data
+      } = await serviceApi.get("/news/getNews", { params: { key: item } });
+      if (status == 200) {
+        this.company_News = data;
       }
+    }
+  },
+  //观察url的变化,变化后重新发起数据请求
+  watch: {
+    $route(to, from) {
+      let item = to.query.key;
+      this.getNews(item);
     }
   },
   created() {
@@ -48,7 +56,7 @@ export default {
       first: "新闻中心",
       second: "公司新闻"
     });
-    this.getNews()
+    this.getNews(this.type);
   }
 };
 </script>

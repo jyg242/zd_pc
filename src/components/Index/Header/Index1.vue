@@ -16,9 +16,9 @@
           </a-sub-menu>
           <a-sub-menu>
             <span slot="title" class="submenu-title-wrapper">新闻中心</span>
-            <a-menu-item key="/news/company?key=1">公司新闻</a-menu-item>
-            <a-menu-item key="/news/media?key=2">行业动态</a-menu-item>
-            <a-menu-item key="/news/notice?key=3">公司公告</a-menu-item>
+            <a-menu-item key="/news/news_list?key=1">公司新闻</a-menu-item>
+            <a-menu-item key="/news/news_list?key=2">行业动态</a-menu-item>
+            <a-menu-item key="/news/news_list?key=3">公司公告</a-menu-item>
           </a-sub-menu>
           <a-sub-menu>
             <span

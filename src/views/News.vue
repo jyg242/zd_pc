@@ -39,9 +39,9 @@ export default {
         title: "新闻中心",
         title_en: "NEWS",
         sub_nav: [
-          { id: 1, nav: "公司新闻", url: "/news/company?key=1" },
-          { id: 2, nav: "媒体关注", url: "/news/media?key=2" },
-          { id: 3, nav: "公司公告", url: "/news/notice?key=3" }
+          { id: 1, nav: "公司新闻", url: "/news/news_list?key=1" },
+          { id: 2, nav: "媒体关注", url: "/news/news_list?key=2" },
+          { id: 3, nav: "公司公告", url: "/news/news_list?key=3" }
         ]
       }
     };
