@@ -55,7 +55,6 @@ export default {
       this.type = value;
     },
     async newsAll(res) {
-      console.log(res);
       // console.log('haha'+res);
       if (
         this.type !== 0 &&
@@ -94,9 +93,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.ant-layout {
-  // height: 900px !important;
-}
 .news_type,
 .news_title,
 .news_img,

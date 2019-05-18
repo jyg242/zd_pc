@@ -56,23 +56,14 @@ export default {
       email: "" //邮箱
     };
   },
-  watch: {
-    items: {
-      handler(news1) {
-        console.log(news1);
-      }
-    }
-  },
   methods: {
     add_input() {
       this.items.push("");
     },
     remove_input(item) {
-      console.log(item);
       this.items.splice(item, 1);
     },
     async go_a() {
-      console.log(111);
       if (
         this.title.length > 0 &&
         this.post.length > 0 &&
@@ -90,7 +81,6 @@ export default {
           phone: this.phone,
           email: this.email
         });
-        console.log(data);
         if (status == 200 && data=='添加成功') {
           this.$info({
             title: "发布成功!",

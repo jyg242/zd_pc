@@ -1,8 +1,12 @@
 <template>
-<!--  首页新闻标题轮播列表 -->
+  <!--  首页新闻标题轮播列表 -->
   <vue-seamless-scroll :data="listData" :class-option="classOption" class="seamless-warp">
     <ul class="item">
-      <li v-for="item in listData" :key="item.id" @click="$router.push({path:'/new_detail',query:{content:`${item._id}`}})">
+      <li
+        v-for="item in listData"
+        :key="item.id"
+        @click="$router.push({path:'/new_detail',query:{content:`${item._id}`}})"
+      >
         <span class="title">{{spliceTitle(item.TITLE,17)}}</span>
       </li>
     </ul>
@@ -21,13 +25,17 @@
       .title {
         font-size: 13px;
       }
+      &:hover{
+        cursor:pointer;
+        color: #ad8757;
+      }
     }
   }
 }
 </style>
 <script>
-import spliceTitle from "../../../util/splice_title.js";
-import serviceApi from '../../../api/axios.js'
+import spliceTitle from "../../../../util/splice_title.js";
+import serviceApi from "../../../../api/axios";
 export default {
   data() {
     this.spliceTitle = spliceTitle;
@@ -37,14 +45,16 @@ export default {
   },
   methods: {
     async getNews_title() {
-      let {status,data:{data}}=await serviceApi.get('/news/getNews')
-      console.log(data)
-      if(status==200&&data){
-        this.listData=data
+      let {
+        status,
+        data: { data }
+      } = await serviceApi.get("/news/getNews");
+      if (status == 200 && data) {
+        this.listData = data;
       }
     }
   },
-  mounted () {
+  mounted() {
     this.getNews_title();
   },
   computed: {

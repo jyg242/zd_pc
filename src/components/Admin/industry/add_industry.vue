@@ -26,7 +26,6 @@ export default {
       this.type = value;
     },
     async newsAll(res) {
-      console.log(res);
       if (
         res.length > 0 &&
         this.title.length > 0

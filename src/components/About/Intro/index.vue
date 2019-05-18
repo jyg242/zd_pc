@@ -1,4 +1,5 @@
 <template>
+<!-- 发展历程 -->
   <div class="intro_content">
     <div class="img">
       <img
@@ -33,7 +34,6 @@ export default {
 .intro_content {
   min-height: 500px;
   width: 800px;
-  // border: 1px solid red;
   padding: 20px;
   background: #fff;
   .content {

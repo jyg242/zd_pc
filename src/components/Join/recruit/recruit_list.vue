@@ -32,8 +32,7 @@ export default {
         data: { data }
       } = await serviceApi.get("/recruit/getRecruit");
       if (status == 200 && data) {
-        console.log(data);
-        this.res = data;
+        this.res = data.reverse();
       }
     }
   },

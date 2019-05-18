@@ -23,17 +23,14 @@ export default {
   methods: {
   
     async newsAll(res) {
-      console.log(res);
       if (
         res.length > 0 &&
         this.title.length > 0
       ) {
-        console.log(111111)
         let data = await serviceApi.post("/duty/setDuty", {
           title: this.title,
           content: res
         });
-        console.log(data)
         if (data.data.status == 200 && data.data.data == "添加成功") {
           this.$info({
             title: "发布成功!",

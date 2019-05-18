@@ -1,4 +1,5 @@
 <template>
+<!-- 新闻列表 -->
   <div class="news_company">
     <ul>
       <li v-for="item in company_News" :key="item._id">
@@ -14,7 +15,6 @@
 </template>
 
 <script>
-// import spliceTitle from "../../../util/splice_title.js";
 import spliceTitle from "../../util/splice_title.js";
 import timeChange from "../../util/time_change.js";
 import serviceApi from "../../api/axios.js";
@@ -22,7 +22,6 @@ export default {
   data() {
     this.spliceTitle = spliceTitle;
     this.timeChange = timeChange;
-    // let type = this.$route.query.key;
     return {
       company_News: [],
       type: this.$route.query.key
@@ -33,18 +32,18 @@ export default {
     go(item) {
       this.$router.push({ path: "/new_detail", query: { content: item } });
     },
-    //获取新闻列表
+    //获取对应的新闻列表
     async getNews(item) {
       let {
         status,
         data: { data }
       } = await serviceApi.get("/news/getNews", { params: { key: item } });
       if (status == 200) {
-        this.company_News = data;
+        this.company_News = data.reverse();
       }
     }
   },
-  //观察url的变化,变化后重新发起数据请求
+  //观察url的变化,请求对应的新闻类型列表
   watch: {
     $route(to, from) {
       let item = to.query.key;

@@ -23,17 +23,8 @@ export default {
 .breadcrumb {
   margin-bottom: 15px;
   .ant-breadcrumb {
-    // width: 800px;
     line-height: 44px;
-    border-bottom: 2px solid #ad8757;
-    // color: #ad8757;
-    // font-weight: 700;
-    > span:last-child {
-      // color: #ad8757;
-    }
-    a {
-      // color: #ad8757;
-    }   
+    border-bottom: 2px solid #ad8757;  
   }
 }
 </style>

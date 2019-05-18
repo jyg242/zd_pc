@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import Header from "../components/Index/Header/Index1";
-import Footer from "../components/Index/Footer/Index1";
+import Header from "../components/Index/Header/Index";
+import Footer from "../components/Index/Footer/Index";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
 import serviceApi from "../api/axios.js";
@@ -38,7 +38,6 @@ export default {
   },
   data() {
     return {
-      
       cs: "集团简介",
       content: [],
       sidebar: {
@@ -55,7 +54,6 @@ export default {
     async getDuty() {
       let {status,data:{data}}=await serviceApi.get('/duty/getDuty')
       if(status==200&&data){
-        console.log(data)
         this.sidebar.sub_nav=data.map((item,index)=>{
           this.content.push(item.content)
           return{

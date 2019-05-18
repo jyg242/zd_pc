@@ -15,63 +15,25 @@
         <h3>
           <i class="iconfont">&#xe607;</i>主营业务
         </h3>
-        <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="item in imgUrl" :key="item.id">
-              <div class="swiper_item">
-                <img :src="item.url" alt width="100%" height="100px">
-              </div>
-            </div>
-          </div>
-        </div>
+        <businessBanner/>
       </div>
       <div class="notice">
-        <img width="100%" src="http://www.beijingns.com.cn/images/in_images/in_public.jpg" alt>
+        <router-link to='/news/news_list?key=3'>
+          <img width="100%" src="http://www.beijingns.com.cn/images/in_images/in_public.jpg" alt>
+        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Swiper from "swiper";
-import newsBanner from "../../Public/news_banner";
+import newsBanner from "./component/news_banner";
+import businessBanner from "./component/business_banner";
+
 export default {
   components: {
-    newsBanner
-  },
-  data() {
-    return {
-      imgUrl: [
-        {
-          id: 1,
-          url: "http://www.beijingns.com.cn/images/in_images/in_con1.jpg"
-        },
-        {
-          id: 2,
-          url: "http://www.beijingns.com.cn/images/in_images/in_con2.jpg"
-        },
-        {
-          id: 3,
-          url: "http://www.beijingns.com.cn/images/in_images/in_con1.jpg"
-        }
-      ]
-    };
-  },
-  methods: {
-    initSwiper() {
-      var swiper = new Swiper(".swiper-container", {
-        autoplay: true,
-        slidesPerView: 2,
-        spaceBetween: 10,
-        pagination: {
-          el: ".swiper-pagination1",
-          clickable: true
-        }
-      });
-    }
-  },
-  mounted() {
-    this.initSwiper();
+    newsBanner,
+    businessBanner
   }
 };
 </script>
@@ -99,7 +61,6 @@ export default {
         }
         .list {
           height: 105px;
-
         }
       }
     }

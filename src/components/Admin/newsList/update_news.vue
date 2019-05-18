@@ -110,7 +110,6 @@ export default {
     edit(key, name) {
       let item = "";
       this.$router.push({ name: "news_edit", params: { key } });
-      console.log(name);
       switch (name) {
         case "1":
           item = "公司新闻";

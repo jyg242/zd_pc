@@ -96,7 +96,6 @@ export default {
       let data2 = JSON.stringify(data1);
       let data = JSON.parse(data2);
       let res = data.data.data;
-      console.log(data.data.data);
       res.map(item => {
         this.lid = item._id;
         this.title = item.TITLE;
@@ -111,7 +110,6 @@ export default {
   },
   mounted() {
     let id = this.$route.params.key;
-    console.log(this.$store.state.title);
     this.lid = id;
     if (id != null) this.getimg(id);
   }

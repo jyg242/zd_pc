@@ -38,7 +38,6 @@ export default new Vuex.Store({
             });
             //存储公司新闻
             let res_company = item.filter(item => item.TYPE == '1')
-            // console.log(res_company)
             res_company.map(item => state.company_news.push(item))
         },
       
@@ -56,7 +55,6 @@ export default new Vuex.Store({
             if (status == 200) {
                 let res = data.data
                 commit('setNews', res)
-                // console.log(res)
             }
         }
     }

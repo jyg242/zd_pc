@@ -1,4 +1,5 @@
 <template>
+  <!-- 新闻详情 -->
   <div class="news_detail">
     <Header></Header>
     <div class="banner_img">
@@ -21,8 +22,8 @@
 </template>
 
 <script>
-import Header from "../Index/Header/Index1";
-import Footer from "../Index/Footer/Index1";
+import Header from "../Index/Header/Index";
+import Footer from "../Index/Footer/Index";
 import innerMenu from "../Public/innerMenu/index";
 import breadCrumb from "../Public/Breadcrumb/index";
 import serviceApi from "../../api/axios.js";
@@ -42,6 +43,7 @@ export default {
     breadCrumb
   },
   methods: {
+    // 获取对应新闻的详细信息
     async getDetail() {
       let {
         status,
@@ -57,7 +59,7 @@ export default {
     }
   },
   mounted() {
-    let content = this.$route.query.content;
+    let content = this.$route.query.content; //新闻列表携带的对应新闻序号
     this.key = content;
     this.getDetail();
   }
@@ -67,7 +69,6 @@ export default {
 <style lang="scss" scoped>
 .news_detail {
   .banner_img {
-    // margin-top: 5px;
     margin-bottom: 10px;
   }
   .content_all {
@@ -88,15 +89,12 @@ export default {
       p:nth-child(2) {
         margin-top: 30px;
         font-size: medium;
-        // padding-left: 30px;
         text-align: center;
         span {
           margin-right: 30px;
         }
       }
       .news_img {
-        // border: 1px solid red;
-        // width: 400px;
         margin: 20px auto;
         text-align: center;
         img {

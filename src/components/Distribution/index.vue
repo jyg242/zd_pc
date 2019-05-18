@@ -13,6 +13,7 @@ export default {
     };
   },
   watch: {
+    //根据url中key的值选择父组件中传过来数组的对应元素
     $route: {
       handler(new1, old1) {
         let item = new1.query.key;
@@ -33,7 +34,6 @@ export default {
 <style lang="scss" scoped>
 .distribution_content {
   width: 800px;
-  // min-height: 500px;
   margin-bottom: 50px;
   padding: 20px;
   background: #fff;
@@ -44,10 +44,7 @@ export default {
     font-size: 16px;
   }
   .detail_con {
-    // border: 1px solid red;
     text-align: center;
-  // min-height: 500px;
-
   }
 }
 </style>

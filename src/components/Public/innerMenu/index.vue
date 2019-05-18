@@ -52,22 +52,17 @@ export default {
   margin-top: 46px;
   width: 250px;
   overflow: hidden;
-  // border: 1px solid red;
   .menu_title {
     padding: 20px;
     height: 110px;
     background: #1d1626;
-    // opacity: 0.9;
-    // color: #ffffff;
     color: #ad8757;
-
     .border_btn {
       width: 210px;
       border-bottom: 1px solid #ad8757;
       margin-bottom: 5px;
     }
     h2 {
-      // color: #ffffff;
       color: #ad8757;
     }
   }
@@ -89,11 +84,7 @@ export default {
         }
       }
       .active {
-        // background: #ad8757;
         background: #1d1626;
-
-        // opacity: .5;
-        // color: #fff;
         color: #ad8757;
         font-weight: 700;
       }

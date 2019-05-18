@@ -1,4 +1,5 @@
 <template>
+<!-- 关于我们 -->
   <div class="about">
     <Header></Header>
     <div class="banner_img">
@@ -21,8 +22,8 @@
 </template>
 
 <script>
-import Header from "../components/Index/Header/Index1";
-import Footer from "../components/Index/Footer/Index1";
+import Header from "../components/Index/Header/Index";
+import Footer from "../components/Index/Footer/Index";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
 

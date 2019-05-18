@@ -127,7 +127,6 @@ export default {
       let data2 = JSON.stringify(data1);
       let data = JSON.parse(data2);
       let res = data.data.data;
-      console.log(res);
       //   console.log(data.data.data);
       let data44 = res.map(item => {
         return {

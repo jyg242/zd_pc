@@ -1,4 +1,5 @@
 <template>
+<!-- 首页轮播 -->
   <a-carousel autoplay>
     <div v-for="item in res" :key="item._id">
       <img :src="item.IMGURL" alt>

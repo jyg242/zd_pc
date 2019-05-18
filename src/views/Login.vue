@@ -8,11 +8,17 @@
     <div class="login_in">
       <div class="pic_box">Admin</div>
       <div class="components-input-demo-presuffix input_pos">
-        <a-input placeholder="请输入用户名" v-model="userName" ref="userNameInput"  @pressEnter='css'>
+        <a-input placeholder="请输入用户名" v-model="userName" ref="userNameInput" @pressEnter="css">
           <a-icon slot="prefix" type="user"/>
           <a-icon v-if="userName" slot="suffix" type="close-circle" @click="emitEmpty_user"/>
         </a-input>
-        <a-input placeholder="请输入密码" v-model="userPwd" ref="userPwdInput" type="password" @pressEnter='css'>
+        <a-input
+          placeholder="请输入密码"
+          v-model="userPwd"
+          ref="userPwdInput"
+          type="password"
+          @pressEnter="css"
+        >
           <a-icon slot="prefix" type="lock"/>
           <a-icon v-if="userPwd" slot="suffix" type="close-circle" @click="emitEmpty_pwd"/>
         </a-input>
@@ -36,6 +42,7 @@
 </template>
 
 <script>
+import serviceApi from 'axios'
 export default {
   data() {
     return {
@@ -43,7 +50,13 @@ export default {
       userPwd: ""
     };
   },
+  mounted () {
+    this.get_info();
+  },
   methods: {
+    async get_info(){
+      
+    },
     emitEmpty_user() {
       this.$refs.userNameInput.focus();
       this.userName = "";
@@ -52,26 +65,26 @@ export default {
       this.$refs.userPwdInput.focus();
       this.userPwd = "";
     },
-    css(){
-        this.submit()
+    css() {
+      this.submit();
     },
-     warning() {
+    warning() {
       this.$warning({
-        title: '自助找回功能暂未开放!',
-        content: '请联系管理员找回密码!',
+        title: "自助找回功能暂未开放!",
+        content: "请联系管理员找回密码!"
       });
     },
-    submit(){
-       let userName=this.userName;
-       let userPwd=this.userPwd;
-        if(userName=='admin'&&userPwd=='123'){
-            localStorage.setItem('isLogin','admin')
-            this.$router.push({
-              path:this.$route.query.redirect||'/'
-            })
-        }else{
-            this.$message.error('账号或密码错误');
-        }
+    submit() {
+      let userName = this.userName;
+      let userPwd = this.userPwd;
+      if (userName == "admin" && userPwd == "123") {
+        localStorage.setItem("isLogin", "admin");
+        this.$router.push({
+          path: this.$route.query.redirect || "/admin"
+        });
+      } else {
+        this.$message.error("账号或密码错误");
+      }
     }
   }
 };
@@ -79,9 +92,6 @@ export default {
 
 <style lang="scss" scoped>
 .login_con {
-  //   width: 100%;
-  //   height: 100%;
-  //   border: 1px solid red;
   position: fixed;
   top: 0;
   bottom: 0;

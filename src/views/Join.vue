@@ -1,13 +1,8 @@
 <template>
+<!-- 加入我们 -->
   <div class="about">
     <Header></Header>
     <div class="banner_img">
-      <!-- <img
-        width="100%"
-        height="308px"
-        src="http://www.zhongzhiwealth.com/uploads/170407/1-1F40G04143611.jpg"
-        alt
-      > -->
       <img
         width="100%"
         height="400px"
@@ -27,8 +22,8 @@
 </template>
 
 <script>
-import Header from "../components/Index/Header/Index1";
-import Footer from "../components/Index/Footer/Index1";
+import Header from "../components/Index/Header/Index";
+import Footer from "../components/Index/Footer/Index";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
 import serviceApi from '../api/axios.js'
@@ -53,17 +48,6 @@ export default {
       }
     };
   },
-  // methods: {
-  //   async getRecruit() {
-  //     let {status,data:{data}}=await serviceApi.get('/recruit/getRecruit')
-  //     if(status==200&&data){
-  //       console.log(data)
-  //     }
-  //   }
-  // },
-  // mounted () {
-  //   this.getRecruit();
-  // },
 };
 </script>
 

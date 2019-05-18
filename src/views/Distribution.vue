@@ -1,4 +1,5 @@
 <template>
+  <!-- 产业布局 -->
   <div class="about">
     <Header></Header>
     <div class="banner_img">
@@ -16,8 +17,8 @@
 </template>
 
 <script>
-import Header from "../components/Index/Header/Index1";
-import Footer from "../components/Index/Footer/Index1";
+import Header from "../components/Index/Header/Index";
+import Footer from "../components/Index/Footer/Index";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
 import Distribution from "../components/Distribution/index";
@@ -50,13 +51,13 @@ export default {
       } = await serviceApi.get("/industry/getIndustry");
       if (status == 200 && data) {
         let res = data.map((item, index) => {
-          this.content.push(item.content);
+          this.content.push(item.content); //所有的产业结果存在content中
           return {
             id: index + 1,
             nav: item.title,
             conten: item.content,
             key: item._id,
-            url:'/distribution/list_1'
+            url: "/distribution/list"
           };
         });
         this.sidebar.sub_nav = res;

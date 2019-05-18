@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import Header from "../../Index/Header/Index1";
-import Footer from "../../Index/Footer/Index1";
+import Header from "../../Index/Header/Index";
+import Footer from "../../Index/Footer/Index";
 import innerMenu from "../../Public/innerMenu/index";
 import breadCrumb from "../../Public/Breadcrumb/index";
 import timeChange from '../../../util/time_change.js'
@@ -54,7 +54,6 @@ export default {
   },
   mounted () {
       let res=this.$route.params.detail;
-      console.log(res)
       this.recruit=res
   },
 };
