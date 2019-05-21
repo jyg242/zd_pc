@@ -51,6 +51,7 @@ export default {
       } = await serviceApi.get("/news/getNews");
       if (status == 200 && data) {
         this.listData = data;
+        // this.$store.commit('setNews',this.listData)
       }
     }
   },

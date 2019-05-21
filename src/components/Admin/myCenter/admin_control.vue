@@ -1,15 +1,24 @@
 <template>
   <div style="padding:20px;">
-    <!-- <a-button
-      class="editable-add-btn"
-      type="primary"
-      @click="handleAdd"
-      style="margin-bottom: 10px;"
-    >增加</a-button> -->
-    <p style="color:red">* 注意: 类型1-代表轮播图, 类型2-代表每页页眉图片, 类型3-代表logo图片, 图片路径不能为空 .</p>
+    <div class="add_admin">
+      <h3>新增管理员</h3>
+      <span style="margin-right:20px;">管理账号:</span>
+      <a-input style="margin-right:40px;" v-model="userName"/>
+      <span style="margin-right:20px;">初始密码:</span>
+      <a-input style="margin-right:40px;" v-model="passWord"/>
+      <span style="margin-right:20px;">权限级别:</span>
+      <a-select defaultValue="请选择" style="width: 120px" @change="handleLevel">
+        <a-select-option value="1">一级权限</a-select-option>
+        <a-select-option value="2">二级权限</a-select-option>
+        <a-select-option value="3">三级权限</a-select-option>
+        <a-select-option value="4">四级权限</a-select-option>
+      </a-select>
+
+      <a-button style="margin-left:30px;" @click="register">增加</a-button>
+    </div>
     <a-table :columns="columns" :dataSource="data" bordered>
       <template
-        v-for="col in ['name', 'age', 'address']"
+        v-for="col in ['name', 'age', 'time','address']"
         :slot="col"
         slot-scope="text, record, index"
       >
@@ -46,16 +55,22 @@ import compare from "../.././../util/sort_ab.js";
 import serviceApi from "../../../api/axios.js";
 const columns = [
   {
-    title: "图片类型",
+    title: "管理员账号",
     dataIndex: "name",
-    width: "15%",
+    width: "30%",
     scopedSlots: { customRender: "name" }
   },
   {
-    title: "图片路径",
+    title: "权限级别",
     dataIndex: "address",
-    width: "65%",
+    width: "10%",
     scopedSlots: { customRender: "address" }
+  },
+  {
+    title: "最近登录时间",
+    dataIndex: "time",
+    width: "40%",
+    scopedSlots: { customRender: "time" }
   },
   {
     title: "操作",
@@ -71,11 +86,27 @@ export default {
     this.cacheData = data.map(item => ({ ...item }));
     return {
       data,
-      columns
+      columns,
+      userName:'',//账号
+      passWord:'',//密码
+      level:''//权限等级
     };
   },
   methods: {
+    //新增管理员
+    async register() {
+        let {status,data:{data}}=await serviceApi.post('/user/register',{
+            userName:this.userName,
+            passWord:this.passWord,
+            level:this.level
+        })
+        console.log(data)
+    },
+    handleLevel(value){
+        this.level=value
+    },
     handleChange(value, key, column) {
+    //   console.log(value, key, column);
       const newData = [...this.data];
       const target = newData.filter(item => key === item.key)[0];
       if (target) {
@@ -104,7 +135,6 @@ export default {
           type: target.name,
           id: target.key
         });
-        console.log(data)
         if (data.data.status == 200 && data.data.data == "修改成功") {
           this.getimg();
           this.$message.success("操作成功");
@@ -116,19 +146,6 @@ export default {
         });
       }
     },
-    // 增加添加行
-    // handleAdd(key) {
-    //   let key1 = key - 0 + 1;
-    //   const newData = [...this.data];
-    //   let count = newData.length;
-    //   const addData = {
-    //     key: count,
-    //     name: ``,
-    //     address: ``
-    //   };
-    //   newData.splice(key1, 0, addData);
-    //   this.data = newData;
-    // },
     //删除
     onDelete(key1) {
       let _this = this;
@@ -178,7 +195,7 @@ export default {
       let data2 = JSON.stringify(data1);
       let data = JSON.parse(data2);
       let res = data.data.data;
-        // console.log(res);
+      //   console.log(data.data.data);
       let data44 = res.map(item => {
         return {
           key: item._id,
@@ -190,7 +207,7 @@ export default {
           name: item.TYPE
         };
       });
-      this.data = data44.sort(compare("name"));
+      //   this.data = data44.sort(compare("name"));
     }
   },
   async mounted() {
@@ -198,7 +215,13 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang='scss' scoped>
+.add_admin {
+  margin-bottom: 20px;
+  input {
+    width: 20%;
+  }
+}
 .editable-row-operations a {
   margin-right: 8px;
 }

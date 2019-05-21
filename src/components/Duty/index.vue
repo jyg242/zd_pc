@@ -17,23 +17,28 @@ export default {
   props: ["detail"],
   data() {
     return {
-      index: ''
-    }
+      index: ""
+    };
   },
   watch: {
     $route: {
-      handler(news1,old1){
-        let key=news1.query.key
-       this.index=key
+      handler(news1, old1) {
+        let key = news1.query.key;
+        this.index = key;
+        // console.log(key)
+        this.$store.commit("setBreadList", {
+          first: "企业责任",
+          second: key==1?'公益事业':'慈善事业'
+        });
       },
-      immediate:true
+      immediate: true
     }
   },
   created() {
-    this.$store.commit("setBreadList", {
-      first: "企业责任",
-      second: "公益事业"
-    });
+    // this.$store.commit("setBreadList", {
+    //   first: "企业责任",
+    //   second: "公益事业"
+    // });
   }
 };
 </script>
@@ -52,7 +57,7 @@ export default {
     margin-bottom: 20px;
   }
 }
-.con_area{
+.con_area {
   background: white;
 }
 </style>

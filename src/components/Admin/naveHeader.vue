@@ -6,6 +6,9 @@
         <a-icon type="down"/>
       </a>
       <a-menu slot="overlay" @click="handleMenu">
+        <a-menu-item key="1">
+          <a href="/admin/password_center">修改密码</a>
+        </a-menu-item>
         <a-menu-item key="0">
           <a href="/login">退出登录</a>
         </a-menu-item>
@@ -22,7 +25,7 @@ export default {
         handleMenu(e) {
           let key=e.key
           if(key==0){
-              localStorage.removeItem('isLogin')
+              localStorage.removeItem('token')
           }
         }
     },
@@ -59,5 +62,8 @@ a{
 }
 .ant-dropdown-menu-item{
     width: 150px;
+}
+.ant-dropdown-menu{
+  margin-top: 10px;
 }
 </style>

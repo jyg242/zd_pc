@@ -6,10 +6,11 @@
 
 <script>
 export default {
-  props: ["detail"],
+  props: ["detail", "list"],
   data() {
     return {
-      index: ""
+      index: "",
+      title: this.list
     };
   },
   watch: {
@@ -18,15 +19,13 @@ export default {
       handler(new1, old1) {
         let item = new1.query.key;
         this.index = item;
+        this.$store.commit("setBreadList", {
+          first: "产业布局",
+          second: this.list.length > 0 ? this.title[this.index - 1] : "产业布局"
+        });
       },
       immediate: true
     }
-  },
-  created() {
-    this.$store.commit("setBreadList", {
-      first: "产业布局",
-      second: "参与股份制银行"
-    });
   }
 };
 </script>

@@ -1,13 +1,9 @@
 <template>
+<!-- 招聘详情 -->
   <div class="news_detail">
     <Header></Header>
     <div class="banner_img">
-      <img
-        width="100%"
-        height="400px"
-        src="../../../assets/top_banner5.jpg"
-        alt
-      >
+      <img width="100%" height="400px" src="../../../assets/top_banner5.jpg" alt>
     </div>
     <div class="content_all">
       <breadCrumb></breadCrumb>
@@ -35,15 +31,13 @@ import Header from "../../Index/Header/Index";
 import Footer from "../../Index/Footer/Index";
 import innerMenu from "../../Public/innerMenu/index";
 import breadCrumb from "../../Public/Breadcrumb/index";
-import timeChange from '../../../util/time_change.js'
-
+import timeChange from "../../../util/time_change.js";
+import serviceApi from "../../../api/axios";
 export default {
   data() {
-      this.timeChange=timeChange
+    this.timeChange = timeChange;
     return {
-      recruit: {
-        
-      }
+      recruit: {}
     };
   },
   components: {
@@ -52,10 +46,37 @@ export default {
     innerMenu,
     breadCrumb
   },
-  mounted () {
-      let res=this.$route.params.detail;
-      this.recruit=res
+  methods: {
+    async getRecruit(id) {
+      let {
+        status,
+        data: { data }
+      } = await serviceApi.get("/recruit/getRecruit", { params: { key: id } });
+      if (status == 200 && data) {
+        this.recruit = data[0];
+        this.getBread_title();
+      }
+    },
+    //获取面包屑内容
+    getBread_title() {
+      this.$store.commit("setBreadList", {
+        first: "诚聘英才",
+        second: this.recruit.title
+      });
+    }
   },
+  mounted() {
+    let res = this.$route.params.detail;
+    //如果页面单纯刷新阻断了父组件的传值,重新请求
+    if (!res) {
+      let id = localStorage.getItem("rec_detail_id");
+      this.getRecruit(id);
+    } else {
+      //否则如果有值用之前的值
+      this.recruit = res;
+      this.getBread_title();
+    }
+  }
 };
 </script>
 

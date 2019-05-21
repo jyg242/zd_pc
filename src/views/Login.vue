@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import serviceApi from 'axios'
+import serviceApi from "../api/axios";
 export default {
   data() {
     return {
@@ -50,13 +50,11 @@ export default {
       userPwd: ""
     };
   },
-  mounted () {
+  mounted() {
     this.get_info();
   },
   methods: {
-    async get_info(){
-      
-    },
+    async get_info() {},
     emitEmpty_user() {
       this.$refs.userNameInput.focus();
       this.userName = "";
@@ -74,11 +72,19 @@ export default {
         content: "请联系管理员找回密码!"
       });
     },
-    submit() {
+    async submit() {
       let userName = this.userName;
-      let userPwd = this.userPwd;
-      if (userName == "admin" && userPwd == "123") {
-        localStorage.setItem("isLogin", "admin");
+      let passWord = this.userPwd;
+      let {
+        status,
+        data: { data ,msg}, 
+      } = await serviceApi.post("/user/login", {
+        userName,
+        passWord
+      });
+      console.log(msg)
+      if (status == 200 && data && msg == "登陆成功") {
+        localStorage.setItem("token", data);
         this.$router.push({
           path: this.$route.query.redirect || "/admin"
         });

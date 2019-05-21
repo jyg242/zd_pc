@@ -78,6 +78,9 @@ export default {
         margin-top: 8px;
         padding: 0 20px;
         list-style: none;
+        &:hover{
+          cursor:pointer;
+        }
         .iconfont {
           font-size: 14px;
           float: right;

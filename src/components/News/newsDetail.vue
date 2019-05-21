@@ -29,6 +29,7 @@ import breadCrumb from "../Public/Breadcrumb/index";
 import serviceApi from "../../api/axios.js";
 import timeChange from "../../util/time_change.js";
 export default {
+  // name:'new_detail',
   data() {
     this.timeChange = timeChange;
     return {
@@ -55,6 +56,10 @@ export default {
       });
       if (status == 200 && data) {
         this.news = data[0];
+        this.$store.commit("setBreadList", {
+          first: "新闻中心",
+          second: this.news.TYPE == 1 ? "公司新闻" : this.news.TYPE == 2 ? "行业动态" : "公司公告"
+        });
       }
     }
   },
@@ -62,7 +67,14 @@ export default {
     let content = this.$route.query.content; //新闻列表携带的对应新闻序号
     this.key = content;
     this.getDetail();
-  }
+  },
+  // activated(){
+  //   console.log(`触发activated`)
+  // },
+  // deactivated(){
+  //   console.log(`触发deactivated`)
+
+  // }
 };
 </script>
 

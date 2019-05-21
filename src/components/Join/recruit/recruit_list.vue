@@ -1,9 +1,10 @@
 <template>
+  <!-- 招聘列表 -->
   <div class="news_company">
     <ul>
       <li v-for="item in res" :key="item._id">
         <span class="title">
-          <h3 @click="go(item)">{{item.title}}</h3>
+          <h3 @click="go(item,item._id)">{{item.title}}</h3>
           <p>发布时间 : {{timeChange(item.createAt)}}</p>
           <p>■ {{item.post}} &nbsp;&nbsp;■ 工作地点:{{item.place}} &nbsp;&nbsp;■岗位要求： 1.{{item.items[0]}} &nbsp;&nbsp;2.{{item.items[1]}}...</p>
         </span>
@@ -23,8 +24,10 @@ export default {
     };
   },
   methods: {
-    go(item) {
+    go(item, id) {
+      // console.log(id);
       this.$router.push({ name: "rec_detail", params: { detail: item } });
+      localStorage.setItem("rec_detail_id", id);
     },
     async getRecruit() {
       let {

@@ -1,4 +1,5 @@
 <template>
+<!-- 后台页面 -->
   <a-layout id="components-layout-demo-custom-trigger">
     <a-layout-sider :trigger="null" collapsible v-model="collapsed">
       <div class="logo"></div>
@@ -46,11 +47,9 @@ export default {
   cursor: pointer;
   transition: color 0.3s;
 }
-
 #components-layout-demo-custom-trigger .trigger:hover {
   color: #1890ff;
 }
-
 #components-layout-demo-custom-trigger .logo {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
@@ -63,8 +62,7 @@ export default {
   left: 0;
   right: 0;
 }
-.nav_header{
-    display: inline-block;
-    
+.nav_header {
+  display: inline-block;
 }
 </style>

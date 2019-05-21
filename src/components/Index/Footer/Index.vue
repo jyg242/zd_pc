@@ -2,17 +2,25 @@
   <div class="footer">
     <div class="content">
       <div class="left">
-        <span>A</span>股信息(601588)
-        <span>101.00</span>
-        <span>(5.00%)</span>
+        <a href="http://stockpage.10jqka.com.cn/000609/#refCountId=stockpage_5c3e9aef_93">
+          <span>A</span>股信息&nbsp;&nbsp;(000609 中迪投资)
+          <!-- <span>101.00</span>
+          <span>(5.00%)</span>-->
+        </a>
       </div>
       <div class="right">
         <div class="r_top">
           <ul>
-            <li>中迪投资</li>
+            <li>
+              <router-link to="/about/intro?key=1">中迪投资</router-link>
+            </li>
             <li>免责声明</li>
-            <li>网站地图</li>
-            <li>邮件订阅</li>
+            <li>
+              <router-link to="/join/contact?key=1">网站地图</router-link>
+            </li>
+            <li>
+              <router-link to="/join/contact?key=1">联系我们</router-link>
+            </li>
           </ul>
         </div>
         <div class="r_btn">
@@ -33,10 +41,14 @@ export default {};
 
 <style lang="scss" scoped>
 .footer {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   margin-top: 15px;
   background-color: black;
   color: #ad8757;
-  padding:10px 0;
+  padding: 10px 0;
   .content {
     width: 1080px;
     height: 65px;

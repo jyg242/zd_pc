@@ -1,8 +1,7 @@
 <template>
   <div style="width: 200px">
     <a-menu
-      :defaultSelectedKeys="['2']"
-      :defaultOpenKeys="['sub1']"
+      
       mode="inline"
       theme="dark"
       :inlineCollapsed="collapsed"
@@ -52,6 +51,14 @@
         <a-menu-item key="0">招聘管理</a-menu-item>
         <a-menu-item key="11">新增招聘</a-menu-item>
       </a-sub-menu>
+      <a-sub-menu key="sub6">
+        <span slot="title">
+          <a-icon type="usergroup-add"/>
+          <span>个人中心</span>
+        </span>
+        <a-menu-item key="12">密码管理</a-menu-item>
+        <a-menu-item key="13">权限审批</a-menu-item>
+      </a-sub-menu>
     </a-menu>
   </div>
 </template>
@@ -100,6 +107,12 @@ export default {
           break;
         case "11":
           this.$router.push({ name: "add_recruit" });
+          break;
+          case "12":
+          this.$router.push({ name: "password_center" });
+          break;
+          case "13":
+          this.$router.push({ name: "admin_control" });
           break;
 
         default:

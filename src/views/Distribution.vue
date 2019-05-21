@@ -9,7 +9,7 @@
       <innerMenu :list="sidebar"></innerMenu>
       <div class="right">
         <breadCrumb></breadCrumb>
-        <router-view :detail="content"></router-view>
+        <router-view :detail="content" :list='title'></router-view>
       </div>
     </div>
     <Footer></Footer>
@@ -40,7 +40,8 @@ export default {
         title_en: "DISTRIBUTION",
         sub_nav: []
       },
-      content: []
+      content: [],
+      title:[] //标题
     };
   },
   methods: {
@@ -52,6 +53,7 @@ export default {
       if (status == 200 && data) {
         let res = data.map((item, index) => {
           this.content.push(item.content); //所有的产业结果存在content中
+          this.title.push(item.title); //所有的产业名称也存进去
           return {
             id: index + 1,
             nav: item.title,
@@ -83,9 +85,6 @@ export default {
   }
   .my_err {
     margin: 0px auto 30px;
-    // .right{
-    //   background: white;
-    // }
   }
 }
 </style>

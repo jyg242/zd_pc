@@ -4,7 +4,7 @@
     <!-- <span>选择新闻类型</span> -->
     <div style="margin-bottom:10px">
       <span style="margin-right:10px;color:red">*选择新闻类型 :</span>
-      <a-select :size="size" :defaultValue="title" style="width: 200px" @change="handleChange_type">
+      <a-select :size="size" :defaultValue="0" style="width: 200px" @change="handleChange_type">
         <a-select-option v-for="i in arr" :key="i.type">{{i.name}}</a-select-option>
       </a-select>
     </div>
@@ -96,8 +96,8 @@ export default {
     //选择类型变化
     handleChange_type(value) {
       //   console.log(`Selected: ${value}`);
-      this.type = value;
-      this.getimg();
+      // this.type = value;
+      this.getimg(value);
     },
     handleChange(value, key, column) {
       const newData = [...this.data];
@@ -196,14 +196,14 @@ export default {
       }
     },
     //回显新闻数据
-    async getimg() {
+    async getimg(value) {
       let data1 = await serviceApi.get("/news/getNews", {
-        params: { key: this.type }
+        params: { key: value }
       });
       let data2 = JSON.stringify(data1);
       let data = JSON.parse(data2);
       let res = data.data.data;
-      //   console.log(data.data.data);
+        // console.log(data.data.data);
       let data44 = res.map(item => {
         return {
           key: item._id,
@@ -221,7 +221,7 @@ export default {
     }
   },
   async mounted() {
-    // this.getimg();
+    this.getimg(0);
   }
 };
 </script>

@@ -1,21 +1,16 @@
 <template>
-<!-- 新闻中心 -->
+  <!-- 新闻中心 -->
   <div class="about">
     <Header></Header>
     <div class="banner_img">
-      <img
-        width="100%"
-        height="400px"
-        src="../assets/top_banner2.jpg"
-        alt
-      >
+      <img width="100%" height="400px" src="../assets/top_banner2.jpg" alt>
     </div>
     <div class="content my_err">
       <!-- 左侧导航 -->
       <innerMenu :list="sidebar"></innerMenu>
       <div class="right">
         <breadCrumb></breadCrumb>
-        <router-view></router-view>
+          <router-view></router-view>   
       </div>
     </div>
     <Footer></Footer>
@@ -42,7 +37,7 @@ export default {
         title_en: "NEWS",
         sub_nav: [
           { id: 1, nav: "公司新闻", url: "/news/news_list?key=1" },
-          { id: 2, nav: "媒体关注", url: "/news/news_list?key=2" },
+          { id: 2, nav: "行业动态", url: "/news/news_list?key=2" },
           { id: 3, nav: "公司公告", url: "/news/news_list?key=3" }
         ]
       }

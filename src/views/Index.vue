@@ -1,5 +1,5 @@
 <template>
-<!-- 首页 -->
+  <!-- 首页 -->
   <div class="main">
     <div>
       <transition name="fade">
@@ -7,7 +7,7 @@
       </transition>
     </div>
     <Header class="header"></Header>
-    <Banner ></Banner>
+    <Banner class="banner"></Banner>
     <Content></Content>
     <Footer></Footer>
   </div>
@@ -30,41 +30,33 @@ export default {
   },
   data() {
     return {
-      isLoading: true,
+      isLoading: this.$store.state.isLoad,
       img: []
     };
   },
-  mounted() {
-    // 初始化页面数据
-    this.loadPageData();
-    this.imageDate();
+  computed: {
+    isLoad_state() {
+      return this.$store.state.isLoad;
+    }
   },
-
-  methods: {
-    loadPageData: function() {
-      // axios 请求页面数据 .then 中将状态值修改  this.isLoading = false
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 1000);
-    },
-    imageDate() {
-      // let {status,data}=await serviceApi('/banner/getImg')
-      // if(status==200){
-      //   let res=data.data
-      this.$store.dispatch("setAllimages");
-      this.$store.dispatch("setAllnews");
-
+  watch: {
+    isLoad_state: {
+      handler(new1) {
+        if (new1 === 0) {
+          this.isLoading = 0;
+        }
+      },
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import '../../node_modules/swiper/dist/css/swiper.css';
+@import "../../node_modules/swiper/dist/css/swiper.css";
 .main {
   .banner {
-    margin-top: 5px;
-    // border: 1px solid red;
+    width: 100%;
+    height: 550px;
   }
 }
 </style>

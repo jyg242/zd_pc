@@ -3,7 +3,7 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="item in imgUrl" :key="item.id">
         <div class="swiper_item">
-            <router-link to="/distribution/list_1?key=1">
+            <router-link to="/distribution/list?key=1">
           <img :src="item.url" alt width="100%" height="100px">
           </router-link>
         </div>
@@ -14,7 +14,6 @@
 
 <script>
 import Swiper from "swiper";
-
 export default {
   data() {
     return {
