@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import serviceApi from "../../../api/axios";
 export default {
   data() {
     return {
@@ -44,16 +45,19 @@ export default {
   methods: {
     handleSubmit(e) {
       e.preventDefault();
-      this.form.validateFields((err, values) => {
+      this.form.validateFields(async (err, values) => {
         if (!err) {
           console.log("Received values of form: ", values);
+          let {
+            status,
+            data: { data }
+          } = await serviceApi.post("/user/change_password", {
+            values
+          });
+          if (status == 200 && data) {
+            this.$message.info(data);
+          }
         }
-      });
-    },
-    handleSelectChange(value) {
-      console.log(value);
-      this.form.setFieldsValue({
-        note: `Hi, ${value === "male" ? "man" : "lady"}!`
       });
     }
   }

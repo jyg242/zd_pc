@@ -66,7 +66,7 @@ img {
    */
   width: 100%;
   /* height: 80%; */
-  height: 550px;
+  min-height: 550px;
   margin: 0 auto;
 }
 </style>

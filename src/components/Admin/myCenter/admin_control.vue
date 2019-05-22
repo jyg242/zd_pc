@@ -67,7 +67,7 @@ const columns = [
     scopedSlots: { customRender: "address" }
   },
   {
-    title: "最近登录时间",
+    title: "当前密码",
     dataIndex: "time",
     width: "40%",
     scopedSlots: { customRender: "time" }
@@ -87,26 +87,44 @@ export default {
     return {
       data,
       columns,
-      userName:'',//账号
-      passWord:'',//密码
-      level:''//权限等级
+      userName: "", //账号
+      passWord: "", //密码
+      level: "" //权限等级
     };
   },
   methods: {
     //新增管理员
     async register() {
-        let {status,data:{data}}=await serviceApi.post('/user/register',{
-            userName:this.userName,
-            passWord:this.passWord,
-            level:this.level
-        })
-        console.log(data)
+      if (
+        this.userName.length > 0 &&
+        this.passWord.length > 0 &&
+        this.level.length > 0
+      ) {
+        let {
+          status,
+          data: { data }
+        } = await serviceApi.post("/user/register", {
+          userName: this.userName,
+          passWord: this.passWord,
+          level: this.level
+        });
+        if (status == 200 && data && data == "注册成功") {
+          this.$message.success(data);
+        } else if (status == 200 && data && data == "注册失败,账号已存在") {
+          this.$message.error(data);
+        } else {
+          this.$message.error("未知错误");
+        }
+      } else {
+        this.$message.warn("账号或密码或权限不能为空");
+        return;
+      }
     },
-    handleLevel(value){
-        this.level=value
+    handleLevel(value) {
+      this.level = value;
     },
     handleChange(value, key, column) {
-    //   console.log(value, key, column);
+      //   console.log(value, key, column);
       const newData = [...this.data];
       const target = newData.filter(item => key === item.key)[0];
       if (target) {
@@ -126,16 +144,14 @@ export default {
     async save(key) {
       const newData = [...this.data];
       const target = newData.filter(item => key === item.key)[0];
-      if (
-        (target.name == 1 || target.name == 2 || target.name == 3) &&
-        target.address.length > 0
-      ) {
-        let data = await serviceApi.post("/banner/updateImg", {
-          imgurl: target.address,
-          type: target.name,
-          id: target.key
+      console.log(target);
+      if (target.address.length > 0 && target.name.length > 0) {
+        let data = await serviceApi.post("/user/update_admin", {
+          level: target.address,
+          userName: target.name,
+          passWord:target.time
         });
-        if (data.data.status == 200 && data.data.data == "修改成功") {
+        if (data.data.status == 200 && data) {
           this.getimg();
           this.$message.success("操作成功");
         }
@@ -165,10 +181,11 @@ export default {
     },
     //执行删除
     async onDelete1(key) {
+      console.log(key);
       const newData = [...this.data];
       const target = newData.filter(item => key === item.key)[0];
       let id = target.key;
-      let data = await serviceApi.post("/banner/removeImg", {
+      let data = await serviceApi.post("/user/remove_adminList", {
         id
       });
       if (data.data.status == 200 && data.data.data == "删除成功") {
@@ -189,25 +206,22 @@ export default {
         this.data = newData;
       }
     },
-    //回显图片数据
+    //回显列表
     async getimg() {
-      let data1 = await serviceApi.get("/banner/getImg");
+      let data1 = await serviceApi.post("/user/admin_list");
       let data2 = JSON.stringify(data1);
       let data = JSON.parse(data2);
       let res = data.data.data;
-      //   console.log(data.data.data);
+      console.log(data.data.data);
       let data44 = res.map(item => {
         return {
+          name: item.userName,
           key: item._id,
-          // address: item.IMGURL,
-          address:
-            item.IMGURL.length > 70
-              ? item.IMGURL.substr(0, 70) + "..."
-              : item.IMGURL,
-          name: item.TYPE
+          address: item.level,
+          time: item.passWord || "未知"
         };
       });
-      //   this.data = data44.sort(compare("name"));
+      this.data = data44.reverse();
     }
   },
   async mounted() {

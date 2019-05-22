@@ -56,7 +56,8 @@ export default {
 .main {
   .banner {
     width: 100%;
-    height: 550px;
+    max-height: 550px;
+    overflow: hidden;
   }
 }
 </style>
