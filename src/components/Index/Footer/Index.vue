@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="content">
       <div class="left">
-        <a href="http://stockpage.10jqka.com.cn/000609/#refCountId=stockpage_5c3e9aef_93">
+        <a href="http://www.cninfo.com.cn/new/disclosure/stock?orgId=gssz0000609&stockCode=000609&tabName=data">
           <span>A</span>股信息&nbsp;&nbsp;(000609 中迪投资)
           <!-- <span>101.00</span>
           <span>(5.00%)</span>-->

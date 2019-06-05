@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <router-view/>
+    <!-- <router-view/>
+    -->
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"/>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"/>
   </div>
 </template>
 <script>
-export default {
-
-}
+export default {};
 </script>
 <style>
-#app{
-  background-color: #F5F5F5;
-  font-family: Arial, "微软雅黑"; 
+#app {
+  background-color: #f5f5f5;
+  font-family: Arial, "微软雅黑";
 }
 </style>

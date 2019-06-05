@@ -6,7 +6,7 @@
       <img
         width="100%"  
         height="400px"     
-        src="../assets/top_banner.jpg"
+        :src="img"
         alt
       >
     </div>
@@ -26,7 +26,7 @@ import Header from "../components/Index/Header/Index";
 import Footer from "../components/Index/Footer/Index";
 import innerMenu from "../components/Public/innerMenu/index";
 import breadCrumb from "../components/Public/Breadcrumb/index";
-
+import headerImage from '@/assets/top_banner.jpg'
 export default {
   components: {
     Header,
@@ -36,6 +36,7 @@ export default {
   },
   data() {
     return {
+      img: headerImage,  //头部图片
       cs: "集团简介",
       sidebar: {
         title: "关于我们",

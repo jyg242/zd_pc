@@ -25,7 +25,7 @@ export default {
         handleMenu(e) {
           let key=e.key
           if(key==0){
-              localStorage.removeItem('token')
+              localStorage.removeItem('jygToken')
           }
         }
     },

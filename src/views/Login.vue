@@ -22,6 +22,17 @@
           <a-icon slot="prefix" type="lock"/>
           <a-icon v-if="userPwd" slot="suffix" type="close-circle" @click="emitEmpty_pwd"/>
         </a-input>
+        <div class="captcha">
+          <a-input
+            type="text"
+            placeholder="图形验证码"
+            autocomplete="off"
+            style="height:40px;width:50%"
+            @pressEnter="css"
+            v-model="capchea"
+          ></a-input>
+          <img :src="capsrc" alt @click="getcapsrc">
+        </div>
       </div>
       <div class="login_btn">
         <a-button type="primary" size="large" @click="submit">登录</a-button>
@@ -47,13 +58,18 @@ export default {
   data() {
     return {
       userName: "",
-      userPwd: ""
+      userPwd: "",
+      capsrc: "http://localhost:3000/user/captcha",
+      capchea: ""
     };
   },
   mounted() {
     this.get_info();
   },
   methods: {
+    getcapsrc() {
+      this.capsrc = "http://localhost:3000/user/captcha?r=" + Date.now();
+    },
     async get_info() {},
     emitEmpty_user() {
       this.$refs.userNameInput.focus();
@@ -75,21 +91,23 @@ export default {
     async submit() {
       let userName = this.userName;
       let passWord = this.userPwd;
+      let capchea = this.capchea;
       let {
         status,
-        data: { data ,msg}, 
-      } = await serviceApi.post("/user/login", {
+        data: { data, msg }
+      } = await serviceApi.post(`/user/login`, {
         userName,
-        passWord
+        passWord,
+        capchea
       });
-      console.log(msg)
+      console.log(status);
       if (status == 200 && data && msg == "登陆成功") {
-        localStorage.setItem("token", data);
+        localStorage.setItem("jygToken", data);
         this.$router.push({
           path: this.$route.query.redirect || "/admin"
         });
       } else {
-        this.$message.error("账号或密码错误");
+        this.$message.error("账号或密码错误或验证码错误");
       }
     }
   }
@@ -138,7 +156,7 @@ export default {
     }
     .login_btn {
       text-align: center;
-      margin-top: 450px;
+      margin-top: 480px;
     }
     .forget {
       margin-top: 30px;
@@ -167,6 +185,15 @@ export default {
   width: 268px;
   top: 300px;
   left: 55px;
+  .captcha {
+    img {
+      position: absolute;
+      width: 125px;
+      height: 40px;
+      border-radius: 5px;
+      left: 141px;
+    }
+  }
 }
 .ant-input-affix-wrapper {
   height: 48px;

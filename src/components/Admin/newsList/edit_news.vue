@@ -68,7 +68,9 @@ export default {
           content: res,
           id: this.lid,
           auth: this.auth,
-          type: this.type
+          type: this.type,
+          img:this.img_min,
+          intro:this.intro
         });
         if (data.data.status == 200 && data.data.data == "修改成功") {
           this.$info({

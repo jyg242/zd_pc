@@ -12,6 +12,9 @@
         <a-select-option value="2">二级权限</a-select-option>
         <a-select-option value="3">三级权限</a-select-option>
         <a-select-option value="4">四级权限</a-select-option>
+        <a-select-option value="5">五级权限</a-select-option>
+        <a-select-option value="6">六级权限</a-select-option>
+        <a-select-option value="7">七级权限</a-select-option>
       </a-select>
 
       <a-button style="margin-left:30px;" @click="register">增加</a-button>
@@ -149,7 +152,7 @@ export default {
         let data = await serviceApi.post("/user/update_admin", {
           level: target.address,
           userName: target.name,
-          passWord:target.time
+          passWord: target.time
         });
         if (data.data.status == 200 && data) {
           this.getimg();

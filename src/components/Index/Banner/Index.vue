@@ -8,7 +8,6 @@
 </template>
 <script>
 import serviceApi from "../../../api/axios.js";
-import { setTimeout } from "timers";
 export default {
   data() {
     return {
@@ -22,7 +21,7 @@ export default {
         data: { data }
       } = await serviceApi.get("/banner/getImg");
       if (status == 200 && data) {
-        this.res = data;
+        this.res = data.filter(item=>item.TYPE==1);
         this.isLoad();
       }
     },
@@ -38,12 +37,10 @@ export default {
         let imgObj = new Image();
         imgObj.src = arrs[index++];
         imgObj.onload = function() {
-          // console.log("加载第" + index + "张图片");
           if (index < arrs.length) {
             loadImage();
           } else {
             _this.$store.commit("setLoad", 0);
-            // console.log('加载完成')
           }
         };
       }

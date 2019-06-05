@@ -10,13 +10,22 @@ export default new Vuex.Store({
         banner_images: [], //图片信息
         index_news: [],//首页新闻新闻信息
         company_news: [],//公司新闻
-        isLoad:1,//首页弹窗覆盖图片判断进度
-        pageSize:0,//页数
-        pageAll:0,
+        isLoad: 1,//首页弹窗覆盖图片判断进度
+        pageSize: 0,//页数
+        pageAll: 0,
+        level: '',//权限等级
+        adminName:'',
+
     },
     mutations: {
-        setLoad(state,item){
-            state.isLoad=item
+        //设置权限等级
+        setLevel(state, item) {
+            state.level = item.level
+            state.adminName=item.userName
+            // console.log(item.userName,2)
+        },
+        setLoad(state, item) {
+            state.isLoad = item
             // console.log(`store接收到的值:${item}`)
         },
         setBreadList(state, item) {
@@ -48,16 +57,21 @@ export default new Vuex.Store({
             res_company.map(item => state.company_news.push(item))
         },
         //存储当前页数
-        setPageSize(state,item){
+        setPageSize(state, item) {
             // console.log(item)
-            state.pageSize=item
+            state.pageSize = item
         },
         //存储总页数
-        setPages(state,item){
+        setPages(state, item) {
             // console.log(item)
-            state.pageAll=item
+            state.pageAll = item
         }
-      
+
+    },
+    getters: {
+        needLevel(state) {
+            return state.level
+        }
     },
     actions: {
         async setAllimages({ commit }) { //获取图片信息
@@ -72,6 +86,13 @@ export default new Vuex.Store({
             if (status == 200) {
                 let res = data.data
                 commit('setNews', res)
+            }
+        },
+        async setAllLevel({ commit }) {
+            let { status, data } = await serviceApi.post("/user/admin")
+            if (status == 200 && data.length > 0) {
+                commit('setLevel',data[0])
+                console.log(data)
             }
         }
     }

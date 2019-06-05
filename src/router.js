@@ -11,16 +11,9 @@ let router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [{
-        path: '/test',
-        name: 'test',
-        component: () => import('./views/Test.vue'),
-        children: [
-            {
-                path: '/test/a1',
-                name: 'a1',
-                component: () => import('./components/Test/index1.vue')
-            }
-        ]
+        path: '/upload',
+        name: 'upload',
+        component: () => import('../src/views/test.vue')
     },
     {
         path: '/',
@@ -34,27 +27,32 @@ let router = new Router({
     }, {
         path: '/about',
         name: 'about',
+        meta: { keepAlive: true },
         component: () =>
             import('./views/About.vue'),
         children: [{
             path: '/about/intro',
             name: 'intro',
+            // meta: { keepAlive: true },
             component: () =>
                 import('./components/About/Intro/index.vue')
         }, {
             path: '/about/history',
             name: 'history',
+            // meta: { keepAlive: true },
             component: () =>
                 import('./components/About/History/index.vue')
         }]
     }, {
         path: '/news',
         name: 'news',
+        meta: { keepAlive: true },
         component: () =>
             import('./views/News.vue'),
         children: [{
             path: '/news/news_list',
             name: 'news_list',
+            // meta: { keepAlive: true },
             component: () =>
                 import('./components/News/newsList.vue')
         }]
@@ -71,6 +69,7 @@ let router = new Router({
     }, {
         path: '/join',
         name: 'join',
+        meta: { keepAlive: true },
         component: () =>
             import('./views/Join.vue'),
         children: [{
@@ -81,16 +80,20 @@ let router = new Router({
         }, {
             path: '/join/recruit',
             name: 'recruit',
+            meta: { keepAlive: true },
             component: () =>
                 import('./components/Join/recruit/recruit_list.vue')
         }]
     }, {
         path: '/distribution',
         name: 'distribution',
+        meta: { keepAlive: true },
+
         component: () => import('./views/Distribution.vue'),
         children: [{
             path: '/distribution/list',
             name: 'distribution1',
+            meta: { keepAlive: true },
             component: () => import('./components/Distribution/index.vue')
         }, {
             path: '/distribution/list_2',
@@ -100,11 +103,13 @@ let router = new Router({
     }, {
         path: '/duty',
         name: 'duty',
+        meta: { keepAlive: true },
         component: () =>
             import('./views/Duty.vue'),
         children: [{
             path: '/duty/public',
             name: 'public',
+            meta: { keepAlive: true },
             component: () =>
                 import('./components/Duty/index.vue')
         },]
@@ -211,7 +216,7 @@ router.beforeEach((to, from, next) => {
     Nprogress.start()
     next()
     // 登录权限 admin
-    let isLogin = localStorage.getItem('token') || undefined
+    let isLogin = localStorage.getItem('jygToken') || undefined
     // 判断是否需要登录权限
     if (to.meta.requireAuth) {
         // 根据是否有token值进行判断

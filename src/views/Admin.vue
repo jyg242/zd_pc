@@ -1,5 +1,5 @@
 <template>
-<!-- 后台页面 -->
+  <!-- 后台页面 -->
   <a-layout id="components-layout-demo-custom-trigger">
     <a-layout-sider :trigger="null" collapsible v-model="collapsed">
       <div class="logo"></div>
@@ -17,8 +17,14 @@
         <nav-header class="nav_header"></nav-header>
       </a-layout-header>
       <a-layout-content
-        :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
+        :style="{ margin: '24px 16px', padding: '14px', background: '#fff', minHeight: '280px' }"
       >
+        <div style="font-size:20px;margin-bottom:10px;">
+          欢迎管理员:
+          <span style="color:red">{{this.$store.state.adminName}}</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;权限等级:
+          <span style="color:red">{{this.$store.state.level}}</span>
+        </div>
         <router-view></router-view>
       </a-layout-content>
     </a-layout>
@@ -27,6 +33,7 @@
 <script>
 import navLeft from "../components/Admin/navLeft";
 import navHeader from "../components/Admin/naveHeader";
+import serviceApi from "../api/axios";
 export default {
   components: {
     navLeft,
@@ -34,8 +41,27 @@ export default {
   },
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      level: ""
     };
+  },
+  // methods: {
+  //   async getInfo() {
+  //     let { status, data } = await serviceApi.post("/user/admin");
+  //     if (status == 200 && data.length > 0) {
+  //       this.admin = data[0].userName;
+  //       this.level = data[0].level;
+  //       this.$store.commit('setLevel',1)
+  //     } else {
+  //       localStorage.removeItem("jygToken");
+  //       $router.go(-1);
+  //     }
+  //   }
+  // },
+  created() {
+    // this.getInfo();
+    // console.log(this.$store.state.level)
+    this.$store.dispatch("setAllLevel");
   }
 };
 </script>

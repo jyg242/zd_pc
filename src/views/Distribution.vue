@@ -55,7 +55,7 @@ export default {
           this.content.push(item.content); //所有的产业结果存在content中
           this.title.push(item.title); //所有的产业名称也存进去
           return {
-            id: index + 1,
+            id: index+1,
             nav: item.title,
             conten: item.content,
             key: item._id,

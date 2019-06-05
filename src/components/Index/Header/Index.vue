@@ -1,5 +1,5 @@
 <template>
-<!-- 首页导航 -->
+  <!-- 首页导航 -->
   <div class="header_con">
     <div class="content">
       <div class="log">
@@ -27,6 +27,13 @@
               class="submenu-title-wrapper"
               @click="$router.push(`/distribution/list?key=1`)"
             >产业布局</span>
+          </a-sub-menu>
+          <a-sub-menu>
+            <span slot="title" class="submenu-title-wrapper">
+              <a target="_Blank"
+                href="http://www.cninfo.com.cn/new/disclosure/stock?orgId=gssz0000609&stockCode=000609&tabName=data"
+              >投资者关系</a>
+            </span>
           </a-sub-menu>
           <a-sub-menu>
             <span slot="title" class="submenu-title-wrapper">企业责任</span>
@@ -60,7 +67,7 @@ export default {
   methods: {
     index() {
       this.$router.push(`/`);
-    },
+    }
   }
 };
 </script>
@@ -77,8 +84,8 @@ export default {
     justify-content: space-between;
     align-items: flex-end;
     right: 0;
-    .log  {
-    padding-bottom: 15px;
+    .log {
+      padding-bottom: 15px;
     }
   }
   .submenu-title-wrapper {
@@ -96,6 +103,13 @@ export default {
   }
   ul {
     background: black !important;
+  }
+  a {
+    color: #ad8757 !important;
+    text-decoration: none;
+  }
+  .router-link-active {
+    text-decoration: none;
   }
 }
 </style>
