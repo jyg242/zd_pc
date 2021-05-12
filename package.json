@@ -14,7 +14,7 @@
     "js-cookie": "^2.2.0",
     "nprogress": "^0.2.0",
     "sass": "^1.18.0",
-    "swiper": "^4.5.0",
+    "swiper": "^6.5.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vue-seamless-scroll": "^1.1.16",
